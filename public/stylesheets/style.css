@@ -1,8 +1,34 @@
+html {
+  min-height: 100%;
+}
+
 body {
+  height: 100%;
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+.sent {
+  text-align: left;
+  color: #00B7FF;
+}
+
+.row {
+  margin: 20px 0 !important;
+}
+
+.center {
+  text-align: center;
+}
+
+.oauth-buttons {
+  margin: 10px 0;
+}
+
+.backgroundGradient {
+  background: linear-gradient(to bottom, #4776e6, #8e54e9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
