@@ -1,0 +1,2 @@
+export MONGODB_URI="mongodb://user:user123@ds263791.mlab.com:63791/stealmylook"
+export SECRET="haewrfouqygewioarjfhliqweuhfgpuoewirhfpyqeuoiawjhbpiuoh23ifbilehquhogfqivg83trihpyqu4ogefaegwnjer"
