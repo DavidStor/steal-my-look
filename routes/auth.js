@@ -1,6 +1,7 @@
 import express from 'express';
 import { User } from '../models/models';
 import expressValidator from 'express-validator';
+
 var genRandomString = function(length){
     return crypto.randomBytes(Math.ceil(length/2))
             .toString('hex') /** convert to hexadecimal format */
