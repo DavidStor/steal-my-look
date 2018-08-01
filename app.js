@@ -97,7 +97,7 @@ app.use(passport.initialize());
 app.use(passport.session())
 app.use('/', index);
 app.use('/users', users);
-app.use('/users', auth(passport));
+app.use('/', auth(passport));
 
 // catch 404 and forward to error handler
 
