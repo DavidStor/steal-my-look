@@ -2,8 +2,7 @@ var mongoose = require('mongoose')
 var Schema = mongoose.Schema;
 var userSchema = new Schema({
   username:String,
-  hashedPassword:String,
-  keySalt:String
+  hashedPassword:String
 })
 
 var User = mongoose.model('User',userSchema);
