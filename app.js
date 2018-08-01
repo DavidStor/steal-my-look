@@ -42,7 +42,6 @@ var sha512 = function(password, salt){
     hash.update(password);
     var value = hash.digest('hex');
     return {
-        salt:salt,
         passwordHash:value
     };
 };
@@ -51,8 +50,7 @@ function saltHashPassword(username,userpassword,salty) {
     var passwordData = sha512(userpassword, salt);
     var z = new User({
       username:username,
-      hashedPassword:passwordData.passwordHash,
-      keySalt:passwordData.salt
+      hashedPassword:passwordData.passwordHash
     })
     z.save(function(err){
       console.log(err)
@@ -60,12 +58,11 @@ function saltHashPassword(username,userpassword,salty) {
 }
 
 
-
+console.log('3')
 app.use(session({
-  secret: 'homozon',
+  secret: process.env.SECRET||'hello',
   store: new MongoStore({mongooseConnection: mongoose.connection})
 }));
-
 passport.use(new LocalStrategy(function(username, password, done) {
   // Find the user with the given username
   // May need to adapt this to your own model
@@ -78,7 +75,7 @@ passport.use(new LocalStrategy(function(username, password, done) {
     }
     // if passwords do not match, auth failed
      /** Gives us salt of length 16 */
-    var passwordData = sha512(password, user.keySalt);
+    var passwordData = sha512(password, process.env.SECRET||'hello');
     if (user.hashedPassword !== passwordData.passwordHash) {
       return done(null, false, { message: 'Incorrect username or password.' });
     }
@@ -97,7 +94,7 @@ passport.deserializeUser((id, done) => {
 });
 app.use(passport.initialize());
 app.use(passport.session())
-app.use('/', index(passport));
+app.use('/', index);
 app.use('/users', users);
 
 // catch 404 and forward to error handler
