@@ -1,11 +1,27 @@
-{{#if error}}
-  <div class="alert alert-danger" role="alert">
-    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-    <span class="sr-only">Error:</span>
-    {{error}}
-  </div>
-{{/if}}
-<form method="POST" style="max-width: 300px; margin: auto; margin-top: 50px; padding: 30px; background: #F5F5F5">
+<div class="well login-box3 center-block">
+  <form method="POST">
+    <img class="logo" src="http://www.dallasarboretum.org/assets/img/instagram-word.png"></img>
+    <input type="text" name="username" class="form-control" placeholder="Username">
+    <input type="password" name="password" class="form-control" placeholder="Password">
+    <input type="password" name="passwordRepeat" class="form-control" placeholder="Verify Password">
+    <button class="btn1 btn-primary">Register</button>
+  </form>
+</div>
+
+{{#each errors}}
+    <center><div class="well2 alert alert-danger" role="alert">{{msg}}</div></center>
+{{/each}}
+
+<div class="well login-box2 center-block">
+  <form class="" action="/login" method="GET">
+    <h4>Already have an account?</h4>
+    <button class="btn2 btn-success" href="/login">Log In</button>
+  </form>
+</div>
+
+
+
+<!-- <form method="POST" style="max-width: 300px; margin: auto; margin-top: 50px; padding: 30px; background: #F5F5F5">
   <h3>Register</h3>
   <div class="form-group">
     <label>Username</label>
@@ -26,4 +42,4 @@
     <button class="btn btn-success">Register</button>
     <a class="btn btn-primary" href="/login">Back to Login</a>
   </div>
-</form>
+</form> -->
