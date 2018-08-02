@@ -44,28 +44,88 @@ router.get('/profile/newpost', function(req, res) {
 
 // POST new post //
 router.post('/profile/newpost', function(req, res) {
-  var newPost = new Post({
-    image: req.body.image,
-    likes: 0,
-    Look: {
-      headware: req.body.headwear,
-      top: req.body.top,
-      pants: req.body.pants,
-      footwear: req.body.footwear,
-      coat: req.body.coat
-    },
-    fromUser: req.user._id,
-    ratings: {
-      smileys: 0,
-      meh: 0,
-      frowns: 0
-    }
+  var newHeadwear = new Product({
+    Amazonlink: req.body.headwearAmazon,
+    description: req.body.headwearDes,
+    type: "headwear",
+    price: req.body.headwearPrice,
+    image: req.body.headwearImage
   })
-  newPostDB.save(function(err) {
+  var newTop = new Product({
+    Amazonlink: req.body.topAmazon,
+    description: req.body.topDes,
+    type: "headwear",
+    price: req.body.topPrice,
+    image: req.body.topImage
+  })
+  var newPants = new Product({
+    Amazonlink: req.body.pantsAmazon,
+    description: req.body.pantsDes,
+    type: "pants",
+    price: req.body.pantsPrice,
+    image: req.body.pantsImage
+  })
+  var newFootwear = new Product({
+    Amazonlink: req.body.footwearAmazon,
+    description: req.body.footwearDes,
+    type: "footwear",
+    price: req.body.footwearPrice,
+    image: req.body.footwearImage
+  })
+
+  newHeadwear.save(function(err,header) {
     if (err) {
-      console.log('error adding new post');
+      console.log('error adding new headwear');
     } else {
-      console.log('successfully saved new post');
+      console.log('successfully saved new headwear');
+      newtop.save(function(err,topper) {
+        if (err) {
+          console.log('error adding new top');
+        } else {
+          console.log('successfully saved new top');
+          newpants.save(function(err,panter) {
+            if (err) {
+              console.log('error adding new pants');
+            } else {
+              console.log('successfully saved new pants');
+              newfootwear.save(function(err,footer) {
+                if (err) {
+                  console.log('error adding new footwear');
+                } else {
+                  console.log('successfully saved new footwear');
+                  var newLook = new Look({
+                    headwear: header._id,
+                    top: topper._id,
+                    pants: panter._id,
+                    footwear: footer._id
+                  })
+                  newLook.save(function(err, looker) {
+                    if (err) {
+                      console.log('error saving new look');
+                    } else {
+                      console.log('successfully saved new look');
+                      var newPost = new Post({
+                        image: req.body.image,
+                        likes: 0,
+                        Look: looker.id,
+                        fromUser: req.user._id,
+                      })
+                      newPost.save(function(err) {
+                        if (err) {
+                          console.log('error adding new post');
+                        } else {
+                          console.log('successfully saved new post');
+                          res.redirect('/');
+                        }
+                      })
+                    }
+                  })
+                }
+              })
+            }
+          })
+        }
+      })
     }
   })
 })
