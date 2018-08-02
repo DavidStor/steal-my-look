@@ -16,6 +16,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
 
   </head>
+  {{#if user}}
     <nav class="navbar navbar-inverse">
      <div class="container-fluid">
        <div class="navbar-header">
@@ -30,6 +31,7 @@
        <button class="btn btn-danger navbar-btn">Call TA</button>
      </div>
     </nav>
+  {{/if}}
     <body class="backgroundGradient">
     <div class="container">
       {{{body}}}
