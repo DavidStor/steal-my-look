@@ -30,11 +30,11 @@ var userSchema = new mongoose.Schema({
    type: mongoose.Schema.ObjectId,
    ref: 'Look'
   }],
- profilePic:String,
- wardrobe: [{
+  profilePic: String,
+   wardrobe: [{
    type: mongoose.Schema.ObjectId,
    ref: 'Wardrobe'
- }]
+  }]
 });
 
 var postSchema = new mongoose.Schema({

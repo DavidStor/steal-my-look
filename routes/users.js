@@ -75,7 +75,7 @@ router.get('/feed/:id', function(req, res) {
 // POST profile pic //
 router.post('/profilepic',upload.single('avatar'), function(req, res) {
   console.log(req.file)
-  res.send('hi')
+  res.redirect('/profile')
 })
 
 // GET new post //
@@ -190,7 +190,10 @@ router.post('/newpost', function(req, res) {
 
 router.get('/wardrobe', function(req, res) {
   var owner = req.user._id;
-  User.findbyID(owner)
+  User.findbyId(owner, function(error, user) {
+
+  })
+
   res.render('wardrobe', {wardrobe: wardrobe})
 })
 
