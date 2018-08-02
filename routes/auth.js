@@ -1,7 +1,7 @@
 import express from 'express';
 import { User } from '../models/models';
 import expressValidator from 'express-validator';
-import crypto from 'crypto'; 
+import crypto from 'crypto';
 var genRandomString = function(length){
     return crypto.randomBytes(Math.ceil(length/2))
             .toString('hex') /** convert to hexadecimal format */
@@ -32,7 +32,10 @@ export default function(passport) {
   router.use(expressValidator());
 
   router.get('/signup', function(req, res) {
-    res.render('register');
+    if(req.user){
+      req.logout();
+    }
+    res.render('signup');
   });
 
   router.post('/signup', function(req, res) {
@@ -53,12 +56,27 @@ export default function(passport) {
         username: req.body.username
       });
     } else {
-      saltHashPassword(req.body.username,req.body.password, process.env.SECRET)
-      res.redirect('/')
+      User.findOne({username:req.body.username},function(err,user){
+        if(err){
+          console.log(err);
+        }else if(user==null){
+          saltHashPassword(req.body.username,req.body.password, process.env.SECRET)
+          res.redirect('/')
+        }else{
+          errors.push({msg:"Username already taken"})
+          res.render("signup", {
+            errors: errors,
+            username: req.body.username
+          });
+        }
+      })
     }
   });
 
   router.get('/login', function(req, res) {
+    if(req.user){
+      req.logout();
+    }
     res.render('login');
   });
 
