@@ -39,7 +39,7 @@ router.post('/profilepic', function(req, res) {
 
 // GET new post //
 router.get('/profile/newpost', function(req, res) {
-
+  res.render('newpost');
 })
 
 // POST new post //
