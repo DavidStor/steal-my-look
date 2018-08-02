@@ -3,8 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var models = require('./models/models');
-import { User } from './models/models';
+import models from './models/models.js';
+var User = models.User;
 import users from './routes/users';
 import index from './routes/index';
 import auth from './routes/auth';
@@ -14,7 +14,7 @@ var sta = require('connect-mongo');
 var passport = require('passport');
 var LocalStrategy = require('passport-local');
 import session from 'express-session';
-import crypto from 'crypto'; 
+import crypto from 'crypto';
 var MongoStore = sta(session);
 
 mongoose.connection.on('connected',function(){
@@ -55,7 +55,7 @@ passport.use(new LocalStrategy(function(username, password, done) {
     }
 
     // if passwords do not match, auth failed
-   
+
     if (hashPassword(password) === user.password) {
       // Sucessful login
       return done(null, user);
@@ -79,13 +79,14 @@ passport.serializeUser((user, done) => {
 });
 
 passport.deserializeUser((id, done) => {
+  console.log(User)
   User.findById(id, (err, user) => {
     done(err, user);
   });
 });
 app.use('/', auth(passport));
 app.use('/', index);
-app.use('/users', users);
+app.use('/', users);
 // catch 404 and forward to error handler
 
 // error handler

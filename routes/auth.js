@@ -1,5 +1,6 @@
 import express from 'express';
-import { User } from '../models/models';
+import models from '../models/models.js';
+var User = models.User;
 import expressValidator from 'express-validator';
 import crypto from 'crypto';
 
