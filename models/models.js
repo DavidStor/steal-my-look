@@ -12,11 +12,12 @@ var userSchema = new mongoose.Schema({
     required: true
   },
   profilePic: {
-    type: Image
-  },
-  posts: {
-   //reference to schema of post
+    type: String
   }
+  // ,
+  // posts: {
+  //  //reference to schema of post
+  // }
 });
 
 
