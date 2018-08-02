@@ -13,8 +13,7 @@ var userSchema = new mongoose.Schema({
   },
   profilePic: {
     type: String
-  }
-  ,
+  },
   posts: {
    type: mongoose.Schema.ObjectId,
    ref: 'Post'
@@ -28,7 +27,7 @@ var postSchema = new mongoose.Schema({
     type: mongoose.Schema.ObjectId,
     ref: 'Product'
   }],
-  owner: {
+  fromUser: {
     type: mongoose.Schema.ObjectId,
     ref: 'User'
   }
@@ -44,7 +43,6 @@ var productSchema = new mongoose.Schema({
     ref: 'Post'
   }
 })
-
 
 
 var User = mongoose.model('User', userSchema);
