@@ -25,8 +25,8 @@ export default function(passport) {
   router.post('/signup', function(req, res) {
     console.log("i'm in the post")
     req.check('username' , 'Username is required').notEmpty();
-    req.check('firstname', 'First name is required').notEmpty();
-    req.check('lastname', 'Last name is required').trim().notEmpty();
+    req.check('firstname', 'First Name is required').notEmpty();
+    req.check('lastname', 'Last Name is required').trim().notEmpty();
     req.check('password', 'Password is required').notEmpty();
     req.check('password', 'Password must be longer than 5 characters').isLength({ min: 5 });
     req.check('passwordRepeat', 'Passwords must match').equals(req.body.password);
