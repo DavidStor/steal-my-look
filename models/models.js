@@ -14,15 +14,41 @@ var userSchema = new mongoose.Schema({
   profilePic: {
     type: String
   }
-  // ,
-  // posts: {
-  //  //reference to schema of post
-  // }
+  ,
+  posts: {
+   type: mongoose.Schema.ObjectId,
+   ref: 'Post'
+  }
 });
 
+var postSchema = new mongoose.Schema({
+  image: String,
+  likes: Number,
+  products: [{
+    type: mongoose.Schema.ObjectId,
+    ref: 'Product'
+  }],
+  owner: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'User'
+  }
+})
+
+var productSchema = new mongoose.Schema({
+  link: String,
+  description: String,
+  price: Number,
+  image: String,
+  fromPost: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Post'
+  }
+})
 
 
 
 var User = mongoose.model('User', userSchema);
-export { User }
+var Post = mongoose.model('Post', postSchema);
+var Product = mongoose.model('Product', productSchema);
 
+module.exports { User: User, Post: Post, Product : Product}
