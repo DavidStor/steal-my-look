@@ -11,6 +11,11 @@ router.use((req, res, next) => {
   }
 });
 
+router.get('/profile', function(req, res) {
+  console.log(req.user.username);
+  res.render('profile', {user: req.user});
+});
+
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });

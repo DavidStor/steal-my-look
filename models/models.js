@@ -10,8 +10,16 @@ var userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true
+  },
+  profilePic: {
+    type: Image
+  },
+  posts: {
+   //reference to schema of post
   }
 });
+
+
 
 
 var User = mongoose.model('User', userSchema);
