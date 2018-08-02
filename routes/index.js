@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-import 'models' from '../models/models';
+import models from '../models/models';
 var User = models.User;
 var Post = models.Post;
 var Product = models.Product;
@@ -52,13 +52,29 @@ router.post('/profilepic', function(req, res) {
 })
 
 // GET new post //
-router.post('/profile/newpost', function(req, res) {
-  var newPost = new Post
+router.get('/profile/newpost', function(req, res) {
+
 })
 
 // POST new post //
 router.post('/profile/newpost', function(req, res) {
-  var newPost = new Post 
+  var newPost = new Post({
+    image: req.body.image,
+    likes: 0,
+    Look: {
+      headware: req.body.headwear,
+      top: req.body.top,
+      pants: req.body.pants,
+      footwear: req.body.footwear,
+      coat: req.body.coat
+    },
+    fromUser: {
+
+    }
+  })
 })
+
+
+
 
 module.exports = router;
