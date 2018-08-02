@@ -58,7 +58,7 @@ router.post('/profile/newpost', function(req, res) {
 
 // POST new post //
 router.post('/profile/newpost', function(req, res) {
-  var newPost = new Post
+  var newPost = new Post 
 })
 
 module.exports = router;
