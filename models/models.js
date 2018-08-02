@@ -17,7 +17,15 @@ var userSchema = new mongoose.Schema({
   posts: {
    type: mongoose.Schema.ObjectId,
    ref: 'Post'
-  }
+ },
+ following:[{
+   type: mongoose.Schema.ObjectId,
+   ref: 'User'
+ }],
+ follower:[{
+   type: mongoose.Schema.ObjectId,
+   ref: 'User'
+ }],
 });
 
 var postSchema = new mongoose.Schema({

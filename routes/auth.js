@@ -31,38 +31,45 @@ export default function(passport) {
     console.log("before validation");
     var errors = req.validationErrors();
 
-    if(errors) {
-      //TO-DO Redo this so that if the user is wrong it will put him back
-      console.log(errors);
-      res.render("signup", {
-        errors: errors,
-        username: req.body.username
-      });
-    } else {
+
       User.findOne({username: req.body.username},function(err,user){
         if(err) {
           console.log(err);
         } else if(!user) {
-          var hashedPassword = hashPassword(req.body.password);
-          var newUser = new User({
-            username: req.body.username,
-            password: hashedPassword
-          });
-          newUser.save().then((result) => {
-            res.redirect('/login');
-          }).catch((err) => {
-            res.send(err);
-          });
+          if(errors) {
+            //TO-DO Redo this so that if the user is wrong it will put him back
+            console.log(errors);
+            res.render("signup", {
+              errors: errors,
+              username: req.body.username
+            });
+          } else {
+            var hashedPassword = hashPassword(req.body.password);
+            var newUser = new User({
+              username: req.body.username,
+              password: hashedPassword
+            });
+            newUser.save().then((result) => {
+              res.redirect('/login');
+            }).catch((err) => {
+              res.send(err);
+            });
+          }
         }else{
-          errors.push({msg:"Username already taken"})
+          if(errors) {
+            //TO-DO Redo this so that if the user is wrong it will put him back
+            errors.push({msg:"Username already taken"})
+          }else{
+
+            errors=[{msg:"Username already taken"}]
+          }
           res.render("signup", {
             errors: errors,
             username: req.body.username
           });
         }
       })
-    }
-  });
+    })
 
   router.get('/login', function(req, res) {
     if(req.user){
