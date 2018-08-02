@@ -35,6 +35,13 @@ export default function(passport) {
 
     console.log("before validation");
     var errors = req.validationErrors();
+    var returnObj = {
+      username: req.body.username,
+      password: req.body.password,
+      passwordRepeat:req.body.passwordRepeat,
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+    }
       User.findOne({username: req.body.username},function(err,user){
         if(err) {
           console.log(err);
@@ -44,7 +51,8 @@ export default function(passport) {
             console.log(errors);
             res.render("signup", {
               errors: errors,
-              username: req.body.username
+              username: req.body.username,
+              register:returnObj
             });
           } else {
             var hashedPassword = hashPassword(req.body.password);
@@ -52,7 +60,7 @@ export default function(passport) {
               username: req.body.username,
               password: hashedPassword,
               firstname: req.body.firstname,
-              lastname: req.bodu.lastname,
+              lastname: req.body.lastname,
             });
             newUser.save().then((result) => {
               res.redirect('/login');
@@ -70,7 +78,8 @@ export default function(passport) {
           }
           res.render("signup", {
             errors: errors,
-            username: req.body.username
+            username: req.body.username,
+            register:returnObj
           });
         }
       })
