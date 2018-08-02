@@ -40,7 +40,8 @@ router.get('/feed', function(req, res) {
         console.log('error finding posts');
       } else {
         console.log('successfully found posts');
-        res.render('feed', {posts: posts})
+        console.log(posts)
+        res.render('stfeed', {posts: posts,user: req.user})
       }
     })
 })
