@@ -73,13 +73,7 @@ var lookSchema = new mongoose.Schema({
   coat:{
     type: mongoose.Schema.ObjectId,
     ref: 'Product'
-  },
-  accessories:[
-    {
-      type: mongoose.Schema.ObjectId,
-      ref: 'Product'
-    }
-  ]
+  }
 })
 var productSchema = new mongoose.Schema({
   link: String,
