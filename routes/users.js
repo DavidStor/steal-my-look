@@ -188,6 +188,17 @@ router.post('/newpost', function(req, res) {
   }
 })
 
+// GET edit profile //
+router.get('/editprofile', function(req, res) {
+  res.render('/editprofile');
+})
+
+// POST edit profile //
+router.post('/editprofile', function(req, res) {
+  User.update({_id: req.user._id}, {description: req.body.newDes}, )
+})
+
+// GET wardrobe //
 router.get('/wardrobe', function(req, res) {
   var owner = req.user._id;
   User.findbyId(owner, function(error, user) {
