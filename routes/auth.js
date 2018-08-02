@@ -32,6 +32,9 @@ export default function(passport) {
   router.use(expressValidator());
 
   router.get('/signup', function(req, res) {
+    if(req.user){
+      req.logout();
+    }
     res.render('signup');
   });
 
@@ -71,6 +74,9 @@ export default function(passport) {
   });
 
   router.get('/login', function(req, res) {
+    if(req.user){
+      req.logout();
+    }
     res.render('login');
   });
 
