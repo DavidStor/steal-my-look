@@ -25,16 +25,14 @@ export default function(passport) {
   router.post('/signup', function(req, res) {
     console.log("i'm in the post")
     req.check('username' , 'Username is required').notEmpty();
-    req.check('firstname', 'first name is required').notEmpty();
-    req.check('lastname', 'last name is required').trim().notEmpty();
+    req.check('firstname', 'First name is required').notEmpty();
+    req.check('lastname', 'Last name is required').trim().notEmpty();
     req.check('password', 'Password is required').notEmpty();
     req.check('password', 'Password must be longer than 5 characters').isLength({ min: 5 });
     req.check('passwordRepeat', 'Passwords must match').equals(req.body.password);
 
     console.log("before validation");
     var errors = req.validationErrors();
-
-
       User.findOne({username: req.body.username},function(err,user){
         if(err) {
           console.log(err);
@@ -83,8 +81,6 @@ export default function(passport) {
 
 
   router.post('/login', passport.authenticate('local' , {
-    req.check('username' , 'Username is required').notEmpty();
-    req.check('password', 'Password is required').notEmpty();
     successRedirect: '/', failureRedirect: '/login'})
   );
 
