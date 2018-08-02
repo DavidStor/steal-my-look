@@ -48,7 +48,6 @@ passport.use(new LocalStrategy(function(username, password, done) {
   // Find the user with the given username
   User.findOne({ username: username}).then((user) => {
     // if no user present, auth failed
-    console.log('in here1')
     if (!user) {
       console.log(user);
       var flag = true;
@@ -62,7 +61,6 @@ passport.use(new LocalStrategy(function(username, password, done) {
       return done(null, user);
     } else {
       // Fail login
-      console.log('in here2')
       var flag = true;
       return done(null, false);
     }

@@ -59,7 +59,6 @@ export default function(passport) {
 
   router.get('/logout', function(req, res) {
     req.logout();
-    req.session.cartArr=[];
     res.redirect('/login');
   });
 
