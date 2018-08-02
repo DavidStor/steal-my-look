@@ -17,7 +17,7 @@ router.get('/profile', function(req, res) {
 });
 
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  res.redirect('/profile')
 });
 
 module.exports = router;
