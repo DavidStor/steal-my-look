@@ -12,7 +12,7 @@ router.use((req, res, next) => {
 
 // GET homepage //
 router.get('/', function(req, res, next) {
-  res.redirect('/profile')
+  res.redirect('/feed')
 });
 
 // GET profile //
