@@ -29,7 +29,8 @@ var userSchema = new mongoose.Schema({
   looks:[{
    type: mongoose.Schema.ObjectId,
    ref: 'Look'
-  }]
+ }],
+ profilePic:String
 });
 
 var postSchema = new mongoose.Schema({
@@ -78,8 +79,6 @@ var productSchema = new mongoose.Schema({
   price: Number,
   image: String,
 })
-
-
 var User = mongoose.model('User', userSchema);
 var Post = mongoose.model('Post', postSchema);
 var Product = mongoose.model('Product', productSchema);
