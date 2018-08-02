@@ -41,7 +41,7 @@ router.get('/feed', function(req, res) {
       } else {
         console.log('successfully found posts');
         console.log(posts)
-        res.render('stfeed', {posts: posts,user: req.user})
+        res.render('feed', {posts: posts,user: req.user})
       }
     })
 })
