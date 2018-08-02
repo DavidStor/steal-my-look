@@ -21,7 +21,7 @@ router.get('/feed', function(req, res) {
       path:'Look',
       populate:[{path:'headwear'},{path:'top'},{path:'pants'},{path:'footwear'},{path:'coat'}]
     })
-    .populate('ratings')
+    .populate('ratings')//hello
     .exec(function(error, posts) {
       if (error) {
         console.log('error finding posts');
