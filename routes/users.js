@@ -43,17 +43,17 @@ router.get('/profile/newpost', function(req, res) {
 
 // POST new post //
 router.post('/profile/newpost', function(req, res) {
-  var counter =0;
-  if(req.body.headwearAmazon.trim().length!=0&&req.body.headwearDes.trim().length!=0&&req.body.headwearPrice.trim().length!=0&&req.body.headwearImage.trim().length!=0){
+  var counter = 0;
+  if(req.body.headwearAmazon.trim().length !=0 && req.body.headwearDes.trim().length !=0 && req.body.headwearPrice.trim().length !=0 && req.body.headwearImage.trim().length !=0){
     counter++;
   }
-  if(req.body.topAmazon.trim().length!=0&&req.body.topDes.trim().length!=0&&req.body.topPrice.trim().length!=0&&req.body.topImage.trim().length!=0){
+  if(req.body.topAmazon.trim().length !=0 && req.body.topDes.trim().length !=0 && req.body.topPrice.trim().length !=0 && req.body.topImage.trim().length !=0){
     counter++;
   }
-  if(req.body.pantsAmazon.trim().length!=0&&req.body.pantsDes.trim().length!=0&&req.body.pantsPrice.trim().length!=0&&req.body.pantsImage.trim().length!=0){
+  if(req.body.pantsAmazon.trim().length !=0 && req.body.pantsDes.trim().length !=0 && req.body.pantsPrice.trim().length !=0 && req.body.pantsImage.trim().length !=0 ){
     counter++;
   }
-  if(req.body.footwearAmazon.trim().length!=0&&req.body.footwearDes.trim().length!=0&&req.body.footwearPrice.trim().length!=0&&req.body.footwearImage.trim().length!=0){
+  if(req.body.footwearAmazon.trim().length !=0 && req.body.footwearDes.trim().length !=0 && req.body.footwearPrice.trim().length !=0 && req.body.footwearImage.trim().length !=0 ){
     counter++;
   }
   if(counter<3){
@@ -69,7 +69,7 @@ router.post('/profile/newpost', function(req, res) {
     var newTop = new Product({
       Amazonlink: req.body.topAmazon,
       description: req.body.topDes,
-      type: "headwear",
+      type: "top",
       price: req.body.topPrice,
       image: req.body.topImage
     })
