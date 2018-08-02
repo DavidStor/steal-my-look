@@ -14,19 +14,3 @@ router.get('/feed/:id', function(req, res) {
       }
     })
 })
-
-
-Post.find()
-  .populate('fromUser')
-  .populate({
-    path:'Look',
-    populate:[{path:'headwear'},{path:'top'},{path:'pants'},{path:'footwear'},{path:'coat'}]
-  })
-  .exec(function(error, posts) {
-    if (error) {
-      console.log('error finding posts');
-    } else {
-      console.log('successfully found posts');
-      res.render('feed', {posts: posts})
-    }
-  })

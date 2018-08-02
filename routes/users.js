@@ -54,6 +54,24 @@ router.get('/feed', function(req, res) {
     })
 })
 
+// GET single feed //
+router.get('/feed/:id', function(req, res) {
+  Post.findById(req.params.id)
+    .populate('fromUser')
+    .populate({
+      path: 'Look',
+      populate: [{path:'headwear'},{path:'top'},{path:'pants'},{path:'footwear'},{path:'coat'}]
+    })
+    .exec(function(error, post) {
+      if (error) {
+        console.log('error finding single post');
+      } else {
+        console.log('successfully found single post');
+        res.render('feed', {posts: [post]})
+      }
+    })
+})
+
 // POST profile pic //
 router.post('/profilepic',upload.single('avatar'), function(req, res) {
   console.log(req.file)
@@ -169,4 +187,11 @@ router.post('/newpost', function(req, res) {
     })
   }
 })
+
+router.get('/wardrobe', function(req, res) {
+  var owner = req.user._id;
+  User.findbyID(owner)
+  res.render('wardrobe', {wardrobe: wardrobe})
+})
+
 module.exports = router;
