@@ -21,27 +21,19 @@
     <nav class="navbar navbar-inverse">
      <div class="container-fluid">
        <div class="navbar-header">
-         <a class="navbar-brand" href="#">StealMyLook</a>
+         <a class="navbar-brand" target="_blank" href="https://github.com/amitsant2000/steal-my-look">StealMyLook</a>
        </div>
-       <ul class="nav navbar-nav">
-         <li class="active"><a href="#">Feed</a></li>
-         <li><a href="#">Profile</a></li>
-         <li><a href="#">Wardrobe</a></li>
-         <li><a href="#">Cart</a></li>
-       </ul>
-       <button class="btn btn-danger navbar-btn">Call TA</button>
        <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li><a href="/feed"><span class="glyphicon glyphicon-user"></span> Feed</a></li>
+        <li><a href="/wardrobe"><span class="glyphicon glyphicon-user"></span> Wardrobe</a></li>
+        <li><a href="/cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+        <li><a href="/profile"><span class="glyphicon glyphicon-user"></span> Profile</a></li>
+        <li><a href="/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
       </ul>
      </div>
     </nav>
-    <body>
-      <div class="container">
-        {{{body}}}
-      </div>
   {{/if}}
-  <body class="backgroundGradient">
+  <body>
     <div class="container">
       {{{body}}}
     </div>

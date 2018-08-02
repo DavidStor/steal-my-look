@@ -94,4 +94,4 @@ var Product = mongoose.model('Product', productSchema);
 var Look = mongoose.model('Look', lookSchema);
 var Ratings = mongoose.model('Ratings',ratingsSchema)
 
-export {User, Post, Product, Look}
+export default {User, Post, Product, Look}
