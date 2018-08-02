@@ -61,7 +61,7 @@ export default function(passport) {
           res.redirect('/')
         }else{
           res.render("signup", {
-            errors: ["Username already taken"],
+            errors: [{msg:"Username already taken"}],
             username: req.body.username
           });
         }
