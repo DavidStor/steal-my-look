@@ -47,32 +47,10 @@ router.get('/feed', function(req, res) {
 })
 
 // POST profile pic //
-router.post('/profilepic', function(req, res) {
-
-})
 
 // GET new post //
-router.get('/profile/newpost', function(req, res) {
-
-})
 
 // POST new post //
-router.post('/profile/newpost', function(req, res) {
-  var newPost = new Post({
-    image: req.body.image,
-    likes: 0,
-    Look: {
-      headware: req.body.headwear,
-      top: req.body.top,
-      pants: req.body.pants,
-      footwear: req.body.footwear,
-      coat: req.body.coat
-    },
-    fromUser: {
-
-    }
-  })
-})
 
 
 
