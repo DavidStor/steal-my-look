@@ -1,43 +1,3 @@
-<!-- Body -->
-<!-- <body>
-  <div class="origin-container">
-    <div class="profile-container">
-      <div class="user-information-container">
-        <img class="profile-pic" src="" alt="">
-        <p class="display-name">{{user.username}}</p>
-        <p class="display-age"></p>
-        <p class="display-bio"></p>
-      </div>
-      {{#if user.looks}}
-      <div class="profile-information-container">
-        <div class="looks-container">
-          <p class="looks-display">{{user.looks.length}} looks</p>
-          <p class="looks-number"></p>
-        </div>
-        {{/if}}
-        {{#if user.followers}}
-        <div class="followers-container">
-          <p class="followers-display">{{user.followers.length}} Followers</p>
-          <p class="followers-number"></p>
-        </div>
-        {{/if}}
-        {{#if user.following}}
-        <div class="following-container">
-          <p class="following-display">{{user.following.length}} Following</p>
-          <p class="following-number"></p>
-        </div>
-        {{/if}}
-      </div>
-      <a href='/addPost' style="btn btn-danger">
-
-    </div>
-    <div class="picture-container">
-
-    </div>
-  </div>
-</body> -->
-
-<!--- Include the above in your HEAD tag ---------->
 <div class="row">
   <center><h2>{{user.username}}</h2></center>
 </div>
@@ -49,15 +9,22 @@
         <div class="box box-info">
           <div class="box-body">
             <div class="col-sm-6">
+              {{#if user.profilePic}}
+              <div align="center"> <img alt="User Pic" src="/images/{{user.profilePic}}" id="profile-image1" class="img-circle img-responsive">
+                <form method="POST" action='/profilepic' enctype="multipart/form-data">
+                  <input id="profile-image-upload" onchange="submitFile()" name="avatar" class="hidden" type="file">
+                </form>
+                <div style="color:#999;" >click here to change profile image</div>
+              </div>
+              {{else}}
               <div align="center"> <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive">
                 <form method="POST" action='/profilepic' enctype="multipart/form-data">
                   <input id="profile-image-upload" onchange="submitFile()" name="avatar" class="hidden" type="file">
                 </form>
                 <div style="color:#999;" >click here to change profile image</div>
-                  <!--Upload Image Js And Css-->
               </div>
+              {{/if}}
               <br>
-            <!-- /input-group -->
             </div>
             <div class="col-sm-6">
               <h4 style="color:#00b1b1; display: inline-block; margin-right: 10px;">Ronil Awalegaonkar</h4>
@@ -74,24 +41,25 @@
             <hr style="margin: 5px 0 5px 0;">
 
 
-            <div class="col-sm-5 col-xs-6 tital " >Description:</div><div class="col-sm-7 col-xs-6 " style="font-size: 15px">I am an avid coder!</div>
+            <div class="col-sm-5 col-xs-6 tital " >Description:</div>
+            <div class="col-sm-7 col-xs-6 " style="font-size: 15px">I am an avid coder!</div>
 
             <div class="clearfix"></div>
             <div class="bot-border"></div>
 
-            <div class="col-sm-5 col-xs-6 tital " >Followers:</div><div class="col-sm-7"> 0</div>
+            <div class="col-sm-5 col-xs-6 tital " >Followers:</div>
+            <div class="col-sm-7"> 0</div>
 
             <div class="clearfix"></div>
             <div class="bot-border"></div>
 
-            <div class="col-sm-5 col-xs-6 tital " >Following:</div><div class="col-sm-7"> 0</div>
+            <div class="col-sm-5 col-xs-6 tital " >Following:</div>
+            <div class="col-sm-7"> 0</div>
 
             <div class="clearfix"></div>
             <div class="bot-border"></div>
 
-          <!-- /.box-body -->
           </div>
-          <!-- /.box -->
         </div>
       </div>
     </div>
