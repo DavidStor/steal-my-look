@@ -29,11 +29,16 @@ var userSchema = new mongoose.Schema({
   looks:[{
    type: mongoose.Schema.ObjectId,
    ref: 'Look'
+<<<<<<< HEAD
   }],
   wardrobe: [{
     type: mongoose.Schema.ObjectId,
     ref: 'Wardrobe'
   }]
+=======
+ }],
+ profilePic:String
+>>>>>>> fd5ae9885831cd602a45230d762d19fba9c8b7bd
 });
 
 var postSchema = new mongoose.Schema({
@@ -85,6 +90,7 @@ var productSchema = new mongoose.Schema({
   price: Number,
   image: String,
 })
+<<<<<<< HEAD
 
 var wardrobeSchema = new mongoose.Schema({
   headwear: [{
@@ -105,6 +111,8 @@ var wardrobeSchema = new mongoose.Schema({
   }]
 })
 
+=======
+>>>>>>> fd5ae9885831cd602a45230d762d19fba9c8b7bd
 var User = mongoose.model('User', userSchema);
 var Post = mongoose.model('Post', postSchema);
 var Product = mongoose.model('Product', productSchema);

@@ -5,8 +5,25 @@ var User = models.User;
 var Post = models.Post;
 var Product = models.Product;
 var Look = models.Look;
-var Ratings = models.Ratings;
-var Wardrobe = models.Wardrobe;
+var fs = require('fs');
+import path from "path";
+var multer  = require('multer')
+const storage = multer.diskStorage({
+  destination: path.resolve(__dirname,'../public/images/'),
+  filename:function(req,file,cb){
+    var coolbeans = file.fieldname + '-'+Date.now()+path.extname(file.originalname);
+    User.update({_id:req.user._id},{profilePic:coolbeans},function(err,user){
+      if(err){
+        console.log(err)
+      }else{
+        cb(null,coolbeans)
+      }
+    })
+  }
+})
+const upload=multer({
+  storage:storage
+})
 
 // GET profile //
 router.get('/profile', function(req, res) {
@@ -51,17 +68,18 @@ router.get('/feed/:id', function(req, res) {
 })
 
 // POST profile pic //
-router.post('/profilepic', function(req, res) {
-
+router.post('/profilepic',upload.single('avatar'), function(req, res) {
+  console.log(req.file)
+  res.send('hi')
 })
 
 // GET new post //
-router.get('/profile/newpost', function(req, res) {
+router.get('/newpost', function(req, res) {
   res.render('newpost');
 })
 
 // POST new post //
-router.post('/profile/newpost', function(req, res) {
+router.post('/newpost', function(req, res) {
   var counter = 0;
   if(req.body.headwearAmazon.trim().length !=0 && req.body.headwearDes.trim().length !=0 && req.body.headwearPrice.trim().length !=0 && req.body.headwearImage.trim().length !=0){
     counter++;
