@@ -1,6 +1,7 @@
 import express from 'express';
 import { User } from '../models/models';
 import expressValidator from 'express-validator';
+import crypto from 'crypto'; 
 var genRandomString = function(length){
     return crypto.randomBytes(Math.ceil(length/2))
             .toString('hex') /** convert to hexadecimal format */
@@ -36,10 +37,10 @@ export default function(passport) {
 
   router.post('/signup', function(req, res) {
     console.log("i'm in the post")
-    req.check('username' , 'username is required').notEmpty();
-    req.check('password', 'password is required').notEmpty();
-    req.check('password', 'password must be longer than 5 charecters').isLength({ min: 5 });
-    req.check('passwordRepeat', 'passwords must match').equals(req.body.password);
+    req.check('username' , 'Username is required').notEmpty();
+    req.check('password', 'Password is required').notEmpty();
+    req.check('password', 'Password must be longer than 5 charecters').isLength({ min: 5 });
+    req.check('passwordRepeat', 'Passwords must match').equals(req.body.password);
 
     console.log("before validation");
     var errors = req.validationErrors();
