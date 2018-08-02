@@ -191,7 +191,7 @@ router.post('/newpost', function(req, res) {
 router.get('/wardrobe', function(req, res) {
   var owner = req.user._id;
   User.findbyId(owner, function(error, user) {
-
+    var wardrobe
   })
 
   res.render('wardrobe', {wardrobe: wardrobe})
