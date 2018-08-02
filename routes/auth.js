@@ -60,8 +60,9 @@ export default function(passport) {
           saltHashPassword(req.body.username,req.body.password, process.env.SECRET)
           res.redirect('/')
         }else{
+          errors.push({msg:"Username already taken"})
           res.render("signup", {
-            errors: [{msg:"Username already taken"}],
+            errors: errors,
             username: req.body.username
           });
         }
