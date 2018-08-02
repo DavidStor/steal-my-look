@@ -51,4 +51,5 @@ var User = mongoose.model('User', userSchema);
 var Post = mongoose.model('Post', postSchema);
 var Product = mongoose.model('Product', productSchema);
 
-module.exports { User: User, Post: Post, Product : Product}
+export {User, Post, Product}
+//module.exports= { User: User, Post: Post, Product : Product}
