@@ -15,6 +15,7 @@ export default function(passport) {
   var router = express.Router();
   router.use(expressValidator());
 
+  // GET signup //
   router.get('/signup', function(req, res) {
     if(req.user){
       req.logout();
@@ -22,6 +23,7 @@ export default function(passport) {
     res.render('signup');
   });
 
+  // Post signup //
   router.post('/signup', function(req, res) {
     console.log("i'm in the post")
     req.check('username' , 'Username is required').notEmpty();
@@ -48,7 +50,9 @@ export default function(passport) {
             var hashedPassword = hashPassword(req.body.password);
             var newUser = new User({
               username: req.body.username,
-              password: hashedPassword
+              password: hashedPassword,
+              firstname: req.body.firstname,
+              lastname: req.bodu.lastname,
             });
             newUser.save().then((result) => {
               res.redirect('/login');
@@ -78,7 +82,6 @@ export default function(passport) {
     }
     res.render('login');
   });
-
 
   router.post('/login', passport.authenticate('local' , {
     successRedirect: '/', failureRedirect: '/login'})
