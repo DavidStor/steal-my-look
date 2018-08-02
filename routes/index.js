@@ -27,7 +27,7 @@ router.get('/feed', function(req, res) {
     .populate('fromUser')
     .populate({
       path:'Look',
-      populate:[{path:'headwear'},{path:'top'},{path:'pants'},{path:'footwear'},{path:'accessories'}]
+      populate:[{path:'headwear'},{path:'top'},{path:'pants'},{path:'footwear'},{path:'accessories'},{path:'coat'}]
     })
     .populate('ratings')
     .exec(function(error, posts) {
@@ -35,7 +35,7 @@ router.get('/feed', function(req, res) {
         console.log('error finding posts');
       } else {
         console.log('successfully found posts');
-        res.render('feed', {posts: post})
+        res.render('feed', {posts: posts})
       }
     })
 })
