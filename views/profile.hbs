@@ -37,83 +37,75 @@
   </div>
 </body> -->
 
-<head>
-  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-</head>
-
 <!--- Include the above in your HEAD tag ---------->
-<div class="container">
-	<div class="row">
-    <center><h2>{{user.username}}</h2></center>
-  </div>
-  <div class="row">
-    <div class="col-md-9" style="margin-left: 10%">
-      <div class="panel panel-default">
-        <div class="panel-heading"><h4> </h4></div>
-        <div class="panel-body">
-          <div class="box box-info">
-            <div class="box-body">
-              <div class="col-sm-6">
-                <div align="center"> <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive">
-                  <form method="POST" action='/profilepic' enctype="multipart/form-data">
-                    <input id="profile-image-upload" onchange="submitFile()" name="avatar" class="hidden" type="file">
-                  </form>
-                  <div style="color:#999;" >click here to change profile image</div>
-                    <!--Upload Image Js And Css-->
-                </div>
-                <br>
-              <!-- /input-group -->
-              </div>
-              <div class="col-sm-6">
-                <h4 style="color:#00b1b1; display: inline-block; margin-right: 10px;">Ronil Awalegaonkar</h4>
-                <a href="/editProfile"><span class="glyphicon glyphicon-cog"></a>
-                <br>
-                <br>
-                <br>
-                <br>
-                <form method="GET" action="/newpost">
-                  <button class="btn2 btn-success">New Post</button>
+<div class="row">
+  <center><h2>{{user.username}}</h2></center>
+</div>
+<div class="row">
+  <div class="col-md-9" style="margin-left: 10%">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h4> </h4></div>
+      <div class="panel-body">
+        <div class="box box-info">
+          <div class="box-body">
+            <div class="col-sm-6">
+              <div align="center"> <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive">
+                <form method="POST" action='/profilepic' enctype="multipart/form-data">
+                  <input id="profile-image-upload" onchange="submitFile()" name="avatar" class="hidden" type="file">
                 </form>
+                <div style="color:#999;" >click here to change profile image</div>
+                  <!--Upload Image Js And Css-->
               </div>
-              <div class="clearfix"></div>
-              <hr style="margin: 5px 0 5px 0;">
-
-
-              <div class="col-sm-5 col-xs-6 tital " >Description:</div><div class="col-sm-7 col-xs-6 " style="font-size: 15px">I am an avid coder!</div>
-
-              <div class="clearfix"></div>
-              <div class="bot-border"></div>
-
-              <div class="col-sm-5 col-xs-6 tital " >Followers:</div><div class="col-sm-7"> 0</div>
-
-              <div class="clearfix"></div>
-              <div class="bot-border"></div>
-
-              <div class="col-sm-5 col-xs-6 tital " >Following:</div><div class="col-sm-7"> 0</div>
-
-              <div class="clearfix"></div>
-              <div class="bot-border"></div>
-
-            <!-- /.box-body -->
+              <br>
+            <!-- /input-group -->
             </div>
-            <!-- /.box -->
+            <div class="col-sm-6">
+              <h4 style="color:#00b1b1; display: inline-block; margin-right: 10px;">Ronil Awalegaonkar</h4>
+              <a href="/editProfile"><span class="glyphicon glyphicon-cog"></a>
+              <br>
+              <br>
+              <br>
+              <br>
+              <form method="GET" action="/newpost">
+                <button class="btn2 btn-success">New Post</button>
+              </form>
+            </div>
+            <div class="clearfix"></div>
+            <hr style="margin: 5px 0 5px 0;">
+
+
+            <div class="col-sm-5 col-xs-6 tital " >Description:</div><div class="col-sm-7 col-xs-6 " style="font-size: 15px">I am an avid coder!</div>
+
+            <div class="clearfix"></div>
+            <div class="bot-border"></div>
+
+            <div class="col-sm-5 col-xs-6 tital " >Followers:</div><div class="col-sm-7"> 0</div>
+
+            <div class="clearfix"></div>
+            <div class="bot-border"></div>
+
+            <div class="col-sm-5 col-xs-6 tital " >Following:</div><div class="col-sm-7"> 0</div>
+
+            <div class="clearfix"></div>
+            <div class="bot-border"></div>
+
+          <!-- /.box-body -->
           </div>
+          <!-- /.box -->
         </div>
       </div>
     </div>
-    <script>
-      $(function() {
-        $('#profile-image1').on('click', function() {
-            $('#profile-image-upload').click();
-        });
-      });
-      function submitFile() {
-        console.log(arguments);
-        document.querySelector('form').submit();
-      }
-      //
-    </script>
   </div>
+  <script>
+    $(function() {
+      $('#profile-image1').on('click', function() {
+          $('#profile-image-upload').click();
+      });
+    });
+    function submitFile() {
+      console.log(arguments);
+      document.querySelector('form').submit();
+    }
+    //
+  </script>
 </div>
