@@ -30,7 +30,11 @@ var userSchema = new mongoose.Schema({
    type: mongoose.Schema.ObjectId,
    ref: 'Look'
  }],
- profilePic:String
+ profilePic:String,
+ wardrobe: [{
+   type: mongoose.Schema.ObjectId,
+   ref: 'Wardrobe'
+ }]
 });
 
 var postSchema = new mongoose.Schema({
@@ -79,10 +83,29 @@ var productSchema = new mongoose.Schema({
   price: Number,
   image: String,
 })
+var wardrobeSchema = new mongoose.Schema({
+ headwear: [{
+   type: mongoose.Schema.ObjectId,
+   ref: 'Product'
+ }]
+ tops: [{
+   type: mongoose.Schema.ObjectId,
+   ref: 'Product'
+ }]
+ pants: [{
+   type: mongoose.Schema.ObjectId,
+   ref: 'Product'
+ }]
+ footwear: [{
+   type: mongoose.Schema.ObjectId,
+   ref: 'Product'
+ }]
+})
 var User = mongoose.model('User', userSchema);
 var Post = mongoose.model('Post', postSchema);
 var Product = mongoose.model('Product', productSchema);
 var Look = mongoose.model('Look', lookSchema);
 var Ratings = mongoose.model('Ratings',ratingsSchema)
+var Wardrobe = mongoose.model('Wardrobe', wardrobeSchema);
 
-export default {User, Post, Product, Look}
+export default {User, Post, Product, Look, Wardrobe}

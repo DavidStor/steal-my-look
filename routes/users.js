@@ -26,6 +26,11 @@ const upload=multer({
 })
 
 // GET profile //
+router.get('/wardrobe', function(req, res) {
+ var owner = req.user._id;
+ User.findbyID(owner)
+ res.render('wardrobe', {wardrobe: wardrobe})
+})
 router.get('/profile', function(req, res) {
   console.log(req.user.username);
   res.render('profile', {user: req.user});
