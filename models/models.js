@@ -17,19 +17,19 @@ var userSchema = new mongoose.Schema({
   posts: {
    type: mongoose.Schema.ObjectId,
    ref: 'Post'
- },
- following:[{
+  },
+  following:[{
    type: mongoose.Schema.ObjectId,
    ref: 'User'
- }],
- followers:[{
+  }],
+  followers:[{
    type: mongoose.Schema.ObjectId,
    ref: 'User'
- }],
- looks:[{
+  }],
+  looks:[{
    type: mongoose.Schema.ObjectId,
    ref: 'Look'
- }]
+  }]
 });
 
 var postSchema = new mongoose.Schema({
@@ -69,22 +69,14 @@ var lookSchema = new mongoose.Schema({
   footwear:{
     type: mongoose.Schema.ObjectId,
     ref: 'Product'
-  },
-  coat:{
-    type: mongoose.Schema.ObjectId,
-    ref: 'Product'
   }
 })
 var productSchema = new mongoose.Schema({
-  link: String,
+  Amazonlink: String,
   description: String,
   type:String,
   price: Number,
   image: String,
-  fromPost: {
-    type: mongoose.Schema.ObjectId,
-    ref: 'Post'
-  }
 })
 
 
