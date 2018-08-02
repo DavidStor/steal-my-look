@@ -32,7 +32,7 @@ export default function(passport) {
   router.use(expressValidator());
 
   router.get('/signup', function(req, res) {
-    res.render('register');
+    res.render('signup');
   });
 
   router.post('/signup', function(req, res) {
@@ -61,7 +61,7 @@ export default function(passport) {
           res.redirect('/')
         }else{
           res.render("signup", {
-            errors: "Username already taken",
+            errors: ["Username already taken"],
             username: req.body.username
           });
         }
