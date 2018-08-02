@@ -5,7 +5,8 @@ var User = models.User;
 var Post = models.Post;
 var Product = models.Product;
 var Look = models.Look;
-var Ratings = models.Ratings
+var Ratings = models.Ratings;
+var Wardrobe = models.Wardrobe;
 
 // USE check for user //
 router.use((req, res, next) => {
