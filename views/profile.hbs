@@ -8,20 +8,27 @@
         <p class="display-age"></p>
         <p class="display-bio"></p>
       </div>
+      {{#if user.looks}}
       <div class="profile-information-container">
         <div class="looks-container">
-          <p class="looks-display">Looks</p>
+          <p class="looks-display">{{user.looks.length}} looks</p>
           <p class="looks-number"></p>
         </div>
+        {{/if}}
+        {{#if user.followers}}
         <div class="followers-container">
-          <p class="followers-display">Followers</p>
+          <p class="followers-display">{{user.followers.length}} Followers</p>
           <p class="followers-number"></p>
         </div>
+        {{/if}}
+        {{#if user.following}}
         <div class="following-container">
-          <p class="following-display">Following</p>
+          <p class="following-display">{{user.following.length}} Following</p>
           <p class="following-number"></p>
         </div>
+        {{/if}}
       </div>
+      <a href='/addPost' style="btn btn-danger">
 
     </div>
     <div class="picture-container">

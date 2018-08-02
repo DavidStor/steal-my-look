@@ -26,6 +26,10 @@ var userSchema = new mongoose.Schema({
    type: mongoose.Schema.ObjectId,
    ref: 'User'
  }],
+ looks:[{
+   type: mongoose.Schema.ObjectId,
+   ref: 'Look'
+ }]
 });
 
 var postSchema = new mongoose.Schema({
@@ -63,6 +67,10 @@ var lookSchema = new mongoose.Schema({
     ref: 'Product'
   },
   footwear:{
+    type: mongoose.Schema.ObjectId,
+    ref: 'Product'
+  },
+  coat:{
     type: mongoose.Schema.ObjectId,
     ref: 'Product'
   },
