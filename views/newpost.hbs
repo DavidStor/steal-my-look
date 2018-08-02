@@ -1,3 +1,33 @@
-<div>
-     
+<div class="well">
+  <div class="row">
+  <div class="leftcolumn">
+    <div class="imageSizeing">
+      <div class="fakeimg" style="width:600px ;height:300px" >
+            <div align="center"> 
+              <img alt="User Pic" src="/images/{{user.profilePic}}"  class="img-responsive">
+                <form method="POST" action='/newpost' enctype="multipart/form-data">
+              <input id="profile-image-upload" onchange="submitFile()" name="post" class="hidden" type="file">
+            </form>
+            <div style="color:#999;" >click here to change profile image</div>
+            </div>
+      </div>
+    </div>
+  </div>
+  <div class="rightcolumn">
+     <div class="boxesCR">
+         Link: <input ></input><br>
+         Price: <input></input><br>
+         Description: <input></input><br>
+     </div>
+     <div class="boxesCR">
+         I am a box
+     </div>
+     <div class="boxesCR">
+         I am a box
+     </div>
+     <div class="boxesCR">
+         I am a box
+     </div>
+  </div>
+ </div>
 </div>
