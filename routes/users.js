@@ -180,7 +180,7 @@ router.post('/newpost',upload2.single('imgSrc'), function(req, res) {
                       })
                       newPost.save(function(err) {
                         if (err) {
-                          console.log('error adding new post');
+                          console.log('error adding new post', err);
                         } else {
                           console.log('successfully saved new post');
                           res.redirect('/');
