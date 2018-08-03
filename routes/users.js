@@ -248,9 +248,13 @@ router.get('/wardrobe', function(req, res) {
   User.findbyId(owner, function(error, user) {
     var wardrobe
   })
-
   res.render('wardrobe', {wardrobe: wardrobe,
   user:req.user})
+})
+
+// POST Emoji //
+router.post('/emoji', function(req, res) {
+  console.log(req);
 })
 
 module.exports = router;
