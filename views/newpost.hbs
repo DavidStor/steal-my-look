@@ -2,7 +2,7 @@
 
 </script>
 <div class="panel-main panel-default">
-  <form id='plswork'>
+  <form id='plswork' method='GET' action='/profile'>
     <div class="well panel-heading">
       <center><h4>New Post</h4>
       <input input type='submit' class="btn btn-primary" value='Submit' id='submitter'></center>
@@ -231,7 +231,7 @@
       }
     })
 
-    // $('#plswork').submit()
+    $('#plswork').submit()
     // $.ajax({
     //   url: "https://api.imgur.com/3/image",
     //   type: "POST",

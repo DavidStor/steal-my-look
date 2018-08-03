@@ -40,7 +40,7 @@ router.get('/feed', function(req, res) {
         console.log('error finding posts');
       } else {
         console.log('successfully found posts');
-        res.render('feed', {posts: posts,
+        res.render('feed', {posts: posts.reverse(),
         user:req.user})
       }
     })
