@@ -97,7 +97,11 @@ router.post('/profilepic',upload.single('avatar'), function(req, res) {
 
 // GET new post //
 router.get('/newpost', function(req, res) {
+<<<<<<< HEAD
+  res.render('newpost',{user:req.user, hello:'q'});
+=======
   res.render('newpost',{user:req.user});
+>>>>>>> 3c95cd26a46475136101b50832f2294a3ab7c2f7
 })
 
 // POST new post //
