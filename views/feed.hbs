@@ -32,3 +32,22 @@
     {{/each}}
   </main>
 </body>
+
+<script>
+  var smile = 0;
+  var meh = 0;
+  var no = 0;
+  function myFunction1() {
+    smile++;
+    document.getElementById("1").innerHTML = "😍" + " " + smile;
+  }
+  function myFunction2() {
+    meh++;
+    document.getElementById("2").innerHTML = "😐" + " " + meh;
+  }
+  function myFunction3() {
+    no++;
+    document.getElementById("3").innerHTML = "😰" + " " + no;
+  }
+
+</script>

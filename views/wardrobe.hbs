@@ -9,14 +9,14 @@
       </div>
       {{/each}}
     </div>
-    <div class = 'hidden' id='topContainer'>
+    <div id='topContainer'>
       {{#each wardrobe.tops}}
       <div class = 'col-md-6'>
         <img src='/public/images/{{this.image}}'/>
       </div>
       {{/each}}
     </div>
-    <div class = 'hidden'  id='pantContainer'>
+    <div class = 'hidden' id='pantContainer'>
       {{#each wardrobe.pants}}
       <div class = 'col-md-6'>
         <img src='/public/images/{{this.image}}'/>
@@ -40,10 +40,10 @@
       </div>
       {{/each}}
     </div>
-  </div<
+  </div>
 </div>
 <style>
 .hidden{
-  display:none
+  border: solid 2px black;
 }
 </style>

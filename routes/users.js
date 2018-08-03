@@ -10,20 +10,15 @@ var fs = require('fs');
 import path from "path";
 var multer  = require('multer')
 const storage = multer.diskStorage({
-  destination: path.resolve(__dirname,'../public/images/'),
-  filename:function(req,file,cb){
-    var coolbeans = file.fieldname + '-'+Date.now()+path.extname(file.originalname);
-    User.update({_id:req.user._id},{profilePic:coolbeans},function(err,user){
-      if(err){
-        console.log(err)
-      }else{
-        cb(null,coolbeans)
-      }
-    })
-  }
+ destination: path.resolve(__dirname,'../public/images/'),
+ filename:function(req,file,cb){
+   var coolbeans = file.fieldname + '-'+Date.now()+path.extname(file.originalname);
+   cb(null,coolbeans)
+
+ }
 })
 const upload = multer({
-  storage:storage
+ storage:storage
 })
 //data
 // GET profile //
@@ -35,7 +30,7 @@ router.get('/profile', function(req, res) {
 // GET feed //
 router.get('/feed', function(req, res) {
   Post.find()
-    .populate('fromUser')
+    .populate('ratings fromUser')
     .populate({
       path:'Look',
       populate:[{path:'headwear'},{path:'top'},{path:'pants'},{path:'footwear'},{path:'coat'}]
@@ -72,8 +67,15 @@ router.get('/feed/:id', function(req, res) {
 
 // POST profile pic //
 router.post('/profilepic',upload.single('avatar'), function(req, res) {
-  console.log(req.file)
-  res.redirect('/editprofile')
+ console.log(req.file)
+ User.update({_id:req.user._id},{profilePic:req.file.filename},function(err,user){
+   if(err){
+     console.log(err)
+   }else{
+
+     res.redirect('/editprofile')
+   }
+ })
 })
 
 // GET new post //
@@ -83,37 +85,6 @@ router.get('/newpost', function(req, res) {
 
 // POST new post //
 router.post('/newpost', function(req, res) {
-  fs.readFile(req.body.headImage,function(err,data){
-    if(err){
-      console.log(err);
-    }else{
-      console.log(data)
-    }
-  })
-  fs.writeFile("../public/images/"+req.body.headImage, req.body.headImage, 'binary', function(err) {
-    if(err)
-      console.log(err);
-    else
-      console.log("The file was saved!");
-  });
-  fs.writeFile("../public/images/"+req.body.topImage, req.body.topImage, 'binary', function(err) {
-    if(err)
-      console.log(err);
-    else
-      console.log("The file was saved!");
-  });
-  fs.writeFile("../public/images/"+req.body.pantImage, req.body.pantImage, 'binary', function(err) {
-    if(err)
-      console.log(err);
-    else
-      console.log("The file was saved!");
-  });
-  fs.writeFile("../public/images/"+req.body.footwearImage, req.body.footImage, 'binary', function(err) {
-    if(err)
-      console.log(err);
-    else
-      console.log("The file was saved!");
-  });
   // var counter = 0;
   // if(req.body.headwearAmazon.trim().length !=0 && req.body.headwearDes.trim().length !=0 && req.body.headwearPrice.trim().length !=0 && req.body.headwearImage.trim().length !=0){
   //   counter++;
@@ -266,72 +237,143 @@ router.post('/editprofile', function(req, res) {
   }
 })
 
-// POST Emoji //
+// POST Emoji 1//
 router.post('/emoji/:postId/1', function(req, res) {
-  /* Post.update({_id: postId}, function(err, updatedObject) {
-
-  } */
-  console.log('inside post emoji 1');
   Post.findById(req.params.postId, function(err, thePost) {
     if (err) {
       console.log('error finding post', err);
     } else {
-      console.log(thePost);
-      var current= thePost.ratings.smileys;
-      console.log('successfully found post');
-      console.log('post is', thePost);
-      thePost.set({ratings: {
-        smileys: current + 1
-      }});
-      res.render("feed" , {posts: thePost,
-        user:req.user});
+        console.log(thePost);
+        Rating.findById(thePost.ratings._id, function(err, theRating) {
+          if (err) {
+            console.log('error finding post', err);
+            console.log('The rating is', theRating);
+          } else {
+            console.log('The rating is', theRating);
+            console.log('smiley is', theRating.smileys);
+            var smileys = theRating.smileys;
+            var newSmiley = smileys + 1;
+            console.log('the new smiley value is', newSmiley);
+            Rating.update({_id: theRating._id},{smileys:newSmiley},function(err,smiley){
+              if(err){
+                console.log('the error is', err)
+              } else{
+                console.log('inside else for rating.update');
+                Post.find()
+                .populate('ratings fromUser')
+                .exec(
+                function(err, posts) {
+                  if (err) {
+                    console.log('errors for post find are', err);
+                  } else {
+                    console.log('inside final post.find');
+                    console.log('posts are', posts);
+                    console.log('ratings for the 4th post should be', posts[3].ratings);
+                    console.log('smileys for the 4th post should be', posts[3].ratings.smileys);
+                    res.render("feed" , {posts: posts,
+                      user:req.user});
+                    // res.json({updated: true})
+                  }
+                })
+              }
+          })
+          }
+        });
     }
   })
   })
 
+  // POST Emoji 2//
   router.post('/emoji/:postId/2', function(req, res) {
-    /* Post.update({_id: postId}, function(err, updatedObject) {
-
-    } */
-    console.log('inside post emoji 2');
     Post.findById(req.params.postId, function(err, thePost) {
       if (err) {
         console.log('error finding post', err);
       } else {
-        console.log(thePost);
-        var current= thePost.ratings.smileys;
-        console.log('successfully found post');
-        console.log('post is', thePost);
-        thePost.set({ratings: {
-          smileys: current + 1
-        }});
-        res.render("feed" , {posts: posts,
-          user:req.user});
+          console.log(thePost);
+          Rating.findById(thePost.ratings._id, function(err, theRating) {
+            if (err) {
+              console.log('error finding post', err);
+              console.log('The rating is', theRating);
+            } else {
+              console.log('The rating is', theRating);
+              console.log('smiley is', theRating.meh);
+              var meh = theRating.meh;
+              var newMeh = meh + 1;
+
+              Rating.update({_id: theRating._id},{meh:newMeh},function(err,meh){
+                if(err){
+                  console.log('the error is', err)
+                } else{
+                  console.log('inside else for rating.update');
+                  Post.find()
+                  .populate('ratings fromUser')
+                  .exec(
+                  function(err, posts) {
+                    if (err) {
+                      console.log('errors for post find are', err);
+                    } else {
+                      console.log('inside final post.find');
+                      console.log('posts are', posts);
+                      console.log('ratings for the 4th post should be', posts[3].ratings);
+                      console.log('smileys for the 4th post should be', posts[3].ratings.meh);
+                      res.render("feed" , {posts: posts,
+                        user:req.user});
+                      // res.json({updated: true})
+                    }
+                  })
+                }
+            })
+            }
+          });
       }
     })
     })
 
-    router.post('/emoji/:postId/3', function(req, res) {
-      /* Post.update({_id: postId}, function(err, updatedObject) {
-
-      } */
-      console.log('inside post emoji 3');
-      Post.findById(req.params.postId, function(err, thePost) {
-        if (err) {
-          console.log('error finding post', err);
-        } else {
-          console.log(thePost);
-          var current= thePost.ratings.smileys;
-          console.log('successfully found post');
-          console.log('post is', thePost);
-          thePost.set({ratings: {
-            likes: current + 1
-          }});
-          res.render("feed" , {posts: posts,
-            user:req.user});
-        }
-      })
-      })
+// POST Emoji 3//
+router.post('/emoji/:postId/3', function(req, res) {
+  Post.findById(req.params.postId, function(err, thePost) {
+    if (err) {
+      console.log('error finding post', err);
+    } else {
+        console.log(thePost);
+        Rating.findById(thePost.ratings._id, function(err, theRating) {
+          if (err) {
+            console.log('error finding post', err);
+            console.log('The rating is', theRating);
+          } else {
+            console.log('The rating is', theRating);
+            console.log('frown is', theRating.frowns);
+            var frowns = theRating.frowns;
+            var newFrowns = frowns + 1;
+            console.log('the new frowns value is', newFrowns);
+            Rating.update({_id: theRating._id},{frowns:newFrowns},function(err, frown){
+              if(err){
+                console.log('the error is', err)
+              } else{
+                console.log('inside else for rating.update');
+                Post.find()
+                .populate('ratings fromUser')
+                .exec(
+                function(err, posts) {
+                  if (err) {
+                    console.log('errors for post find are', err);
+                  } else {
+                    console.log('inside final post.find');
+                    console.log('posts are', posts);
+                    console.log('ratings for the 4th post should be', posts[3].ratings);
+                    console.log('smileys for the 4th post should be', posts[3].ratings.frowns);
+                    res.render("feed" , {posts: posts,
+                      user:req.user});
+                    // res.json({updated: true})
+                  }
+                })
+              }
+          })
+          }
+        });
+    }
+  })
+  })
 
 
 
