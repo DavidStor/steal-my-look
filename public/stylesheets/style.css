@@ -85,13 +85,23 @@ body {
   width: 100%;
   font-size: 16px;
   border-radius: 10px;
-  background: #3897F0;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: DodgerBlue !important;
 }
 
 .btn2 {
   width: 200px;
   font-size: 16px;
   border-radius: 10px;
+}
+
+.btn3 {
+  width: 100%;
+  font-size: 16px;
+  border-radius: 10px;
+  background-color: DodgerBlue;
 }
 
 .well2 {
@@ -129,6 +139,15 @@ input.hidden {
     position: absolute;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+.btn {
+    background-color: DodgerBlue;
+    border: none;
+    color: white;
+    padding: 12px 16px;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 .leftcolumn {
