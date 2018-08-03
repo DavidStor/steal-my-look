@@ -22,28 +22,32 @@
         <div class="right-container col-sm-6">
           <div class="boxes-container col-md-offset-2 col-md-6 row">
              <div class="col-md-12 boxesCR" style="border: solid DodgerBlue 5px;">
-                 Link: <input ></input><br>
-                 Price: <input></input><br>
-                 Description: <input></input><br>
-                 Image: <input type='file' onchange="readURLHead(this);" /><img id="headPic" src="#" alt="your image" style="font-size: 10px;"/>
+                 Link: <input name="headwearAmazon"></input><br>
+                 Price: <input name="headwearPrice"></input><br>
+                 Description: <input name="headwearDes"></input><br>
+                 Image: <input type="file" name="filename" onchange="readURLHead(this);" />
+                 <img id="headPic" src="#" alt="your image" style="font-size: 10px;"/>
              </div>
              <div class="col-md-12 boxesCR" style="border: solid DodgerBlue 5px;">
-                 Link: <input ></input><br>
-                 Price: <input></input><br>
-                 Description: <input></input><br>
-                 Image: <input type='file' onchange="readURLTop(this);" /><img id="topPic" src="#" alt="your image" />
+                 Link: <input name="topAmazon"></input><br>
+                 Price: <input name="topPrice"></input><br>
+                 Description: <input name="topDes"></input><br>
+                 Image: <input type="file" name="topImage" onchange="readURLHead(this);" />
+                 <img id="topPic" src="#" alt="your image" />
              </div>
              <div class="col-md-12 boxesCR" style="border: solid DodgerBlue 5px;">
-                 Link: <input ></input><br>
-                 Price: <input></input><br>
-                 Description: <input></input><br>
-                 Image: <input type='file' onchange="readURLPant(this);" /><img id="pantPic" src="#" alt="your image" />
+                 Link: <input name="pantsAmazon"></input><br>
+                 Price: <input name="pantsPrice"></input><br>
+                 Description: <input name="pantsDes"></input><br>
+                 Image: <input type="file" name="pantsImage" onchange="readURLHead(this);" />
+                 <img id="pantPic" src="#" alt="your image" />
              </div>
              <div class="col-md-12 boxesCR" style="border: solid DodgerBlue 5px;">
-                 Link: <input ></input><br>
-                 Price: <input></input><br>
-                 Description: <input></input><br>
-                 Image: <input type='file' onchange="readURLFoot(this);" /><img id="footPic" src="#" alt="your image" />
+                 Link: <input name="footwearAmazon"></input><br>
+                 Price: <input name="footwearPrice"></input><br>
+                 Description: <input name="footwearDes"></input><br>
+                 Image: <input type="file" name="footwearImage" onchange="readURLHead(this);" />
+                 <img id="footPic" src="#" alt="your image" />
              </div>
              <form method="POST" action="/newpost">
                <button class="btn btn-primary"> Submit</button>
