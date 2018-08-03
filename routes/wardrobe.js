@@ -23,7 +23,7 @@ router.get('/wardrobe', function(req, res) {
     if(error){
       console.log(error)
     }else{
-        res.render('wardrobe', {wardrobe: user.wardrobe,user:user})
+        res.render('wardrobe', {wardrobe: user.wardrobe, user:user})
     }
   })
 })
