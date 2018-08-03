@@ -15,7 +15,7 @@ router.get('/wardrobe', function(req, res) {
   User.findById(owner)
   .populate({
     path: 'wardrobe',
-    populate: [{path:'headwear'},{path:'top'},{path:'pants'},{path:'footwear'}]
+    populate: [{path:'Look',populate: [{path:'headwear'},{path:'top'},{path:'pants'},{path:'footwear'}]}]
   })
   .populate({
     path: 'looks',
@@ -25,7 +25,8 @@ router.get('/wardrobe', function(req, res) {
     if(error){
       console.log(error)
     }else{
-        res.render('wardrobe', {wardrobe: user.wardrobe, user:user})
+        console.log(user.wardrobe)
+        res.render('wardrobe', {wardrobe: user.wardrobe[0], user:user})
     }
   })
 })
