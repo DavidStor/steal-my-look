@@ -3,9 +3,60 @@
 </script>
 <div class="panel-main panel-default">
   <form id='plswork'>
+    <div class="well panel-heading">
+      <center><h4>New Post</h4>
+      <input input type='submit' class="btn btn-primary" value='Submit' id='submitter'></center>
+    </div>
+    <div class="panel-body">
+      <div id="flex-container">
+          <div class="big_box" style="margin-top: 20px; border-radius: 5px;">
+            <div align="hahaha center">
+              <div class="yesyesyes image-container"  style="display:flex;justify-content: center;flex-direction: row;position: relative;align-items: center;">
+                <input required  id="post-image-upload" style="cursor: pointer;opacity: 0;border: solid DodgerBlue 5px;border-radius: 3px;background: grey;width: 100%;height: 100%; position: absolute;top: 0;left: 0;right: 0;bottom: 0;" onchange="readURLBig(this);" name="avatar" type="file">
+                <img id="bigPic" class="hidden" src="#">
+              </div>
+            </div>
+          </div>
+      </div>
+      <div id="flex-container">
+        <div class="well small_box" style="margin-top: 20px;  padding-left: 10px; padding-top: 10px;">
+          Link: <br><input required  id="headwearAmazon"></input><br>
+          Price: <br><input required  id="headwearPrice"></input><br>
+          Description: <br><input required  id="headwearDes"></input><br>
+          Image: <br><input required  type="file" name="headImage" onchange="readURLHead(this);" />
+          <img id="headPic" src="#" alt="your image" style="margin-top: 10px;"/>
+        </div>
+        <div class="well small_box" style="margin-top: 20px;  padding-left: 10px; padding-top: 10px;">
+          Link: <br><input required  id="topAmazon"></input><br>
+          Price: <br><input required  id="topPrice"></input><br>
+          Description: <br><input required  id="topDes"></input><br>
+          Image: <br><input required  type="file" name="topImage" onchange="readURLTop(this);" />
+          <img id="topPic" src="#" alt="your image" style="margin-top: 10px;"/>
+        </div>
+        <div class="well small_box" style="margin-top: 20px;  padding-left: 10px; padding-top: 10px;">
+          Link: <br><input required  id="pantsAmazon"></input><br>
+          Price: <br><input required  id="pantsPrice"></input><br>
+          Description: <br><input required  id="pantsDes"></input><br>
+          Image: <br><input required  type="file" name="pantsImage" onchange="readURLPant(this);" />
+          <img id="pantPic" src="#" alt="your image" style="margin-top: 10px;"/>
+        </div>
+        <div class="well small_box" style="margin-top: 20px;  padding-left: 10px; padding-top: 10px;">
+          Link: <br><input required  id="footwearAmazon"></input><br>
+          Price: <br><input required  id="footwearPrice"></input><br>
+          Description: <br><input required  id="footwearDes"></input><br>
+          Image: <br><input required  type="file" neame="footwearImage" onchange="readURLFoot(this);" />
+          <img id="footPic" src="#" alt="your image" style="margin-top: 10px;"/>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- <div class="panel-main panel-default">
+  <form id='plswork'>
   <div class="panel-heading">
     <center><h4>New Post</h4>
-    <input type='submit' class="btn btn-primary" value='Submit' id='submitter'></center>
+    <input required  type='submit' class="btn btn-primary" value='Submit' id='submitter'></center>
   </div>
   <div class="panel-body">
     <div id="flex-container">
@@ -13,44 +64,44 @@
         <div class="big_box" style="margin-top: 20px;">
           <div align="hahaha center">
             <div class="yesyesyes image-container"  style="display:flex;justify-content: center;flex-direction: row;position: relative;align-items: center;">
-              <input id="post-image-upload" style="cursor: pointer;opacity: 0;border: solid DodgerBlue 5px;border-radius: 3px;background: grey;width: 100%;height: 100%; position: absolute;top: 0;left: 0;right: 0;bottom: 0;" onchange="readURLBig(this);" name="avatar" type="file">
+              <input required  id="post-image-upload" style="cursor: pointer;opacity: 0;border: solid DodgerBlue 5px;border-radius: 3px;background: grey;width: 100%;height: 100%; position: absolute;top: 0;left: 0;right: 0;bottom: 0;" onchange="readURLBig(this);" name="avatar" type="file">
               <img id="bigPic" class="hidden" src="#">
             </div>
           </div>
       </div>
       <div id="flex-container">
         <div class="well small_box" style="margin-top: 20px;  padding-left: 10px; padding-top: 10px;">
-          Link: <br><input name="headwearAmazon"></input><br>
-          Price: <br><input name="headwearPrice"></input><br>
-          Description: <br><input name="headwearDes"></input><br>
-          Image: <br><input type="file" name="headImage" onchange="readURLHead(this);" />
+          Link: <br><input required  name="headwearAmazon"></input><br>
+          Price: <br><input required  name="headwearPrice"></input><br>
+          Description: <br><input required  name="headwearDes"></input><br>
+          Image: <br><input required  type="file" name="headImage" onchange="readURLHead(this);" />
           <img id="headPic" src="#" alt="your image" style="margin-top: 10px;"/>
         </div>
         <div class="well small_box" style="margin-top: 20px;  padding-left: 10px; padding-top: 10px;">
-          Link: <br><input name="topAmazon"></input><br>
-          Price: <br><input name="topPrice"></input><br>
-          Description: <br><input name="topDes"></input><br>
-          Image: <br><input type="file" name="topImage" onchange="readURLTop(this);" />
+          Link: <br><input required  name="topAmazon"></input><br>
+          Price: <br><input required  name="topPrice"></input><br>
+          Description: <br><input required  name="topDes"></input><br>
+          Image: <br><input required  type="file" name="topImage" onchange="readURLTop(this);" />
           <img id="topPic" src="#" alt="your image" style="margin-top: 10px;"/>
         </div>
         <div class="well small_box" style="margin-top: 20px;  padding-left: 10px; padding-top: 10px;">
-          Link: <br><input name="pantsAmazon"></input><br>
-          Price: <br><input name="pantsPrice"></input><br>
-          Description: <br><input name="pantsDes"></input><br>
-          Image: <br><input type="file" name="pantsImage" onchange="readURLPant(this);" />
+          Link: <br><input required  name="pantsAmazon"></input><br>
+          Price: <br><input required  name="pantsPrice"></input><br>
+          Description: <br><input required  name="pantsDes"></input><br>
+          Image: <br><input required  type="file" name="pantsImage" onchange="readURLPant(this);" />
           <img id="pantPic" src="#" alt="your image" style="margin-top: 10px;"/>
         </div>
         <div class="well small_box" style="margin-top: 20px;  padding-left: 10px; padding-top: 10px;">
-          Link: <br><input name="footwearAmazon"></input><br>
-          Price: <br><input name="footwearPrice"></input><br>
-          Description: <br><input name="footwearDes"></input><br>
-          Image: <br><input type="file" name="footwearImage" onchange="readURLFoot(this);" />
+          Link: <br><input required  name="footwearAmazon"></input><br>
+          Price: <br><input required  name="footwearPrice"></input><br>
+          Description: <br><input required  name="footwearDes"></input><br>
+          Image: <br><input required  type="file" name="footwearImage" onchange="readURLFoot(this);" />
           <img id="footPic" src="#" alt="your image" style="margin-top: 10px;"/>
         </div>
       </div>
     </div>
   </form>
-</div>
+</div> -->
 
 <style>
   #flex-container {
@@ -132,30 +183,77 @@
     console.log(e)
     e.preventDefault()
     console.log('hello')
-    var hello =$("#topPic").attr('src')
-    console.log(hello)
+    var headwearAmazon = $('#headwearAmazon').val()
+    var headwearDes = $('#headwearDes').val()
+    var headwearPrice = $('#headwearPrice').val()
+    var topAmazon = $('#topAmazon').val()
+    var topDes = $('#topDes').val()
+    var topPrice = $('#topPrice').val()
+    var pantsAmazon = $('#pantsAmazon').val()
+    var pantsDes = $('#pantsDes').val()
+    var pantsPrice = $('pantsPrice').val()
+    var footwearAmazon = $('#footwearAmazon').val()
+    var footwearDes = $('#footwearDes').val()
+    var footwearPrice = $('footwearPrice').val()
+    var top =$("#topPic").attr('src')
+    var head = $('#headPic').attr('src')
+    var pant = $("#pantPic").attr('src')
+    var foot = $("#footPic").attr('src')
+    var big = $("#bigPic").attr('src')
+
     $.ajax({
-      url: "https://api.imgur.com/3/image",
-      type: "POST",
-      datatype: "json",
-      headers: {
-        "Authorization": "Client-ID 773559d7e6b4634"
-      },
-      data: {
-        image:hello
-      },
-      success: function(response) {
-        //console.log(response);
-        console.log(response)
-        console.log(response.data.link)
-      },
-      error:function(Err){
-        console.log(Err)
-      },
-      cache: false,
-      contentType: false,
-      processData: false
-    });
+      url:'/newpost',
+      method:'POST',
+      data:{
+        headwearAmazon:headwearAmazon,
+        headwearDes:headwearDes,
+        headwearPrice:headwearPrice,
+        headImage:head,
+        topAmazon:topAmazon,
+        topDes:topDes,
+        topPrice:topPrice,
+        topImage:top,
+        pantsAmazon:pantsAmazon,
+        pantsDes:pantsDes,
+        pantsPrice:pantsPrice,
+        pantImage:pant,
+        footwearAmazon:footwearAmazon,
+        footwearDes:footwearDes,
+        footwearPrice:footwearPrice,
+        footwearImage:foot,
+        image:big
+      },success:function(obj){
+        console.log(obj)
+        console.log('hello')
+      },error:function(cool){
+        console.log(cool)
+        console.log('err')
+      }
+    })
+
+    // $('#plswork').submit()
+    // $.ajax({
+    //   url: "https://api.imgur.com/3/image",
+    //   type: "POST",
+    //   datatype: "json",
+    //   headers: {
+    //     "Authorization": "Client-ID 773559d7e6b4634"
+    //   },
+    //   data: {
+    //     image:hello
+    //   },
+    //   success: function(response) {
+    //     //console.log(response);
+    //     console.log(response)
+    //     console.log(response.data.link)
+    //   },
+    //   error:function(Err){
+    //     console.log(Err)
+    //   },
+    //   cache: false,
+    //   contentType: false,
+    //   processData: false
+    // });
   })
   function readURLHead(input) {
     if (input.files && input.files[0]) {
@@ -248,7 +346,7 @@
           <div class="image-container col-md-12">
             <div align="hahaha center">
               <div class="yesyesyes">
-                <input id="post-image-upload" style = "cursor: pointer; opacity: 0; border: solid DodgerBlue 5px; border-radius: 3px; background: grey; position: absolute; left: 0px; width: 100%; top: 0px; height: 100%;" onchange="readURLBig(this);" name="avatar" type="file">
+                <input required  id="post-image-upload" style = "cursor: pointer; opacity: 0; border: solid DodgerBlue 5px; border-radius: 3px; background: grey; position: absolute; left: 0px; width: 100%; top: 0px; height: 100%;" onchange="readURLBig(this);" name="avatar" type="file">
                 <img id="bigPic" class='hidden' src="#" />
               </div>
             </div>
@@ -257,34 +355,34 @@
         <div class="right-container col-sm-6">
           <div class="boxes-container col-md-offset-2 col-md-6 row">
              <div class="col-md-12 boxesCR" style="border: solid DodgerBlue 5px;">
-                 Link: <input name="headwearAmazon"></input><br>
-                 Price: <input name="headwearPrice"></input><br>
-                 Description: <input name="headwearDes"></input><br>
-                 Image: <input type="file" name="headImage" onchange="readURLHead(this);" />
+                 Link: <input required  name="headwearAmazon"></input><br>
+                 Price: <input required  name="headwearPrice"></input><br>
+                 Description: <input required  name="headwearDes"></input><br>
+                 Image: <input required  type="file" name="headImage" onchange="readURLHead(this);" />
                  <img id="headPic" src="#" alt="your image" style="font-size: 10px;"/>
              </div>
              <div class="col-md-12 boxesCR" style="border: solid DodgerBlue 5px;">
-                 Link: <input name="topAmazon"></input><br>
-                 Price: <input name="topPrice"></input><br>
-                 Description: <input name="topDes"></input><br>
-                 Image: <input type="file" name="topImage" onchange="readURLTop(this);" />
+                 Link: <input required  name="topAmazon"></input><br>
+                 Price: <input required  name="topPrice"></input><br>
+                 Description: <input required  name="topDes"></input><br>
+                 Image: <input required  type="file" name="topImage" onchange="readURLTop(this);" />
                  <img id="topPic" src="#" alt="your image" />
              </div>
              <div class="col-md-12 boxesCR" style="border: solid DodgerBlue 5px;">
-                 Link: <input name="pantsAmazon"></input><br>
-                 Price: <input name="pantsPrice"></input><br>
-                 Description: <input name="pantsDes"></input><br>
-                 Image: <input type="file" name="pantsImage" onchange="readURLPant(this);" />
+                 Link: <input required  name="pantsAmazon"></input><br>
+                 Price: <input required  name="pantsPrice"></input><br>
+                 Description: <input required  name="pantsDes"></input><br>
+                 Image: <input required  type="file" name="pantsImage" onchange="readURLPant(this);" />
                  <img id="pantPic" src="#" alt="your image" />
              </div>
              <div class="col-md-12 boxesCR" style="border: solid DodgerBlue 5px;">
-                 Link: <input name="footwearAmazon"></input><br>
-                 Price: <input name="footwearPrice"></input><br>
-                 Description: <input name="footwearDes"></input><br>
-                 Image: <input type="file" name="footwearImage" onchange="readURLFoot(this);" />
+                 Link: <input required  name="footwearAmazon"></input><br>
+                 Price: <input required  name="footwearPrice"></input><br>
+                 Description: <input required  name="footwearDes"></input><br>
+                 Image: <input required  type="file" name="footwearImage" onchange="readURLFoot(this);" />
                  <img id="footPic" src="#" alt="your image" />
              </div>
-               <input type='submit' class="btn btn-primary" value='Submit'>
+               <input required  type='submit' class="btn btn-primary" value='Submit'>
           </div>
         </div>
         <div class="clearfix"></div>
