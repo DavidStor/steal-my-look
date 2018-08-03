@@ -38,8 +38,9 @@ router.post('/wardrobe/:id',function(req,res){
             if(err){
               console.log(err);
             }else{
-              res.redirect('/feed')
+
               console.log(updated)
+              res.redirect('/feed')
             }
           })
         }
