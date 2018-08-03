@@ -1,25 +1,18 @@
 <div class="panel-main panel-default">
-  <div class="panel-heading"><center><h4>New Post</h4></center></div>
+  <div class="panel-heading">
+    <center><h4>New Post</h4></center>
+  </div>
   <div class="panel-body">
     <div class="box box-info">
       <div class="box-body">
         <div class="left-container col-sm-6">
           <form method="POST" action='/profilepic' enctype="multipart/form-data">
           <div class="image-container col-md-12">
-
             <div align="hahaha center">
               <form method="POST" action='/lookpic' enctype="multipart/form-data">
 
-              <div class="yesyesyes" style="color:#999;">
-                <input id="post-image-upload" style = 'opacity: 0;
-    border: none;
-    border-radius: 3px;
-    background: grey;
-    position: absolute;
-    left: 0px;
-    width: 100%;
-    top: 0px;
-    height: 100%;' onchange="readURLBig(this);" name="avatar" type="file">
+              <div class="yesyesyes">
+                <input id="post-image-upload" style = "cursor: pointer; opacity: 0; border: solid DodgerBlue 5px; border-radius: 3px; background: grey; position: absolute; left: 0px; width: 100%; top: 0px; height: 100%;" onchange="readURLBig(this);" name="avatar" type="file">
                 <img id="bigPic" class='hidden' src="#" />
               </div>
             </div>
@@ -28,32 +21,33 @@
         </div>
         <div class="right-container col-sm-6">
           <div class="boxes-container col-md-offset-2 col-md-6 row">
-             <div class="col-md-12 boxesCR">
+             <div class="col-md-12 boxesCR" style="border: solid DodgerBlue 5px;">
                  Link: <input ></input><br>
                  Price: <input></input><br>
                  Description: <input></input><br>
-                 Image: <input type='file' onchange="readURLHead(this);" />
-    <img id="headPic" src="#" alt="your image" />
+                 Image: <input type='file' onchange="readURLHead(this);" /><img id="headPic" src="#" alt="your image" style="font-size: 10px;"/>
              </div>
-             <div class="col-md-12 boxesCR">
+             <div class="col-md-12 boxesCR" style="border: solid DodgerBlue 5px;">
                  Link: <input ></input><br>
                  Price: <input></input><br>
                  Description: <input></input><br>
                  Image: <input type='file' onchange="readURLTop(this);" /><img id="topPic" src="#" alt="your image" />
              </div>
-             <div class="col-md-12 boxesCR">
+             <div class="col-md-12 boxesCR" style="border: solid DodgerBlue 5px;">
                  Link: <input ></input><br>
                  Price: <input></input><br>
                  Description: <input></input><br>
                  Image: <input type='file' onchange="readURLPant(this);" /><img id="pantPic" src="#" alt="your image" />
              </div>
-             <div class="col-md-12 boxesCR">
+             <div class="col-md-12 boxesCR" style="border: solid DodgerBlue 5px;">
                  Link: <input ></input><br>
                  Price: <input></input><br>
                  Description: <input></input><br>
                  Image: <input type='file' onchange="readURLFoot(this);" /><img id="footPic" src="#" alt="your image" />
              </div>
-             <input type='submit' value="submit">
+             <form method="POST" action="/newpost">
+               <button class="btn btn-primary"> Submit</button>
+             </form>
           </div>
         </div>
         <div class="clearfix"></div>
@@ -87,13 +81,13 @@
     align-items: center; */
   }
   .boxesCR {
-    display: block;
-    border: solid green 2px;
-    background-color: #F8F8F8;
-    margin-bottom: 20px;
-    margin-top: 10px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+      display: block;
+      border: solid green 2px;
+      background-color: #F8F8F8;
+      margin-bottom: 20px;
+      margin-top: 10px;
+      padding-top: 10px;
+      padding-bottom: 10px;
   }
 </style>
 
