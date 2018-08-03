@@ -3,9 +3,9 @@
     {{#each posts}}
       <div class="photo" style="background-color: #f5f5f5;">
           <header class="photo__header">
-              <img src="/public/images/{{this.fromUser.profilePic}}" class="photo__avatar" />
+              <img src="/images/{{user.profilePic}}" class="photo__avatar" style="padding-bottom: 20px;"/>
               <div class="photo__user-info">
-                  <span class="photo__author">{{post.fromUser.username}}</span>
+                  <span class="photo__author" style="padding-bottom: 20px;">{{this.fromUser.username}}</span>
               </div>
           </header>
           <center><img class='rotate90' src="{{this.image}}" style="width: 600px; height: 550px;"/></center>
@@ -13,7 +13,7 @@
           </div>
           <!-- <form method="POST" action="/emoji/{{post._id}}"> -->
           <!-- <div id="spacer"></div> -->
-          <center><div>
+          <center><div style="margin-top: 20px;">
             <form style="clear: right; display: inline-block;" method="POST" action="/emoji/{{this._id}}/1">
               <button id="1"  style="border-radius: 40px; margin-bottom: 20px; margin-right: 40px; font-size:20px; background: red">😍 {{this.ratings.smileys}}</button>
             </form>
