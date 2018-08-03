@@ -1,10 +1,10 @@
 
-<div class="container-newPost">
+<!-- <div class="container-newPost">
   <div class="row">
     <div class="image-container col-md-6">
       <div class="imageSizing">
           <div align="center">
-            <img alt="User Pic" src="/images/{{user.profilePic}}"  class="img-responsive">
+            <img src="/images/{{user.profilePic}}" class="img-responsive">
             <form method="POST" action='/newpost' enctype="multipart/form-data">
               <input id="profile-image-upload" onchange="submitFile()" name="post" class="hidden" type="file">
             </form>
@@ -34,5 +34,111 @@
            Description: <input></input><br>
        </div>
     </div>
+    <form method="post" action="/newpost">
+      <button type="submit">Post</button>
+    </form>
   </div>
-</div>
+</div> -->
+
+<div class="panel-main panel-default">
+  <div class="panel-heading"><center><h4>New Post</h4></center></div>
+  <div class="panel-body">
+    <div class="box box-info">
+      <div class="box-body">
+        <div class="left-container col-sm-6">
+          <div class="image-container col-md-12">
+            <div align="hahaha center">
+              <form method="POST" action='/profilepic' enctype="multipart/form-data">
+                <input id="post-image-upload" onchange="submitFile()" name="avatar" class="hidden" type="file">
+              </form>
+              <div class="yesyesyes" style="color:#999;">
+                <p>Click here to upload a new post!</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- <div class="boxes-container col-md-6 row">
+             <div class="col-md-12 boxesCR">
+                 Link: <input ></input><br>
+                 Price: <input></input><br>
+                 Description: <input></input><br>
+             </div>
+          </div> -->
+        </div>
+        <div class="right-container col-sm-6">
+          <div class="boxes-container col-md-offset-2 col-md-6 row">
+             <div class="col-md-12 boxesCR">
+                 Link: <input ></input><br>
+                 Price: <input></input><br>
+                 Description: <input></input><br>
+             </div>
+             <div class="col-md-12 boxesCR">
+                 Link: <input ></input><br>
+                 Price: <input></input><br>
+                 Description: <input></input><br>
+             </div>
+             <div class="col-md-12 boxesCR">
+                 Link: <input ></input><br>
+                 Price: <input></input><br>
+                 Description: <input></input><br>
+             </div>
+             <div class="col-md-12 boxesCR">
+                 Link: <input ></input><br>
+                 Price: <input></input><br>
+                 Description: <input></input><br>
+             </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <hr style="margin: 5px 0 5px 0;">
+      </div>
+    </div>
+  </div>
+  </div>
+
+<style>
+  .panel-main {
+    display: inline !important;
+  }
+  .left-container {
+    border: 2px solid black;
+    padding: 0px;
+  }
+  .right-container {
+    border: 2px solid black
+  }
+  .image-container {
+    border: 2px solid yellow;
+    height: 750px;
+    background-color: #f8f8f8;
+
+  }
+  .yesyesyes {
+    fontcolor red;
+    padding-top: 20px
+  }
+  .boxes-container {
+    /* justify-content: center;
+    align-items: center; */
+  }
+  .boxesCR {
+    display: block;
+    border: solid green 2px;
+    background-color: #F8F8F8;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+</style>
+<script>
+  $(document).ready(function(){
+    $('.panel-main').width(window.innerWidth)
+    $('.panel-main').height(window.innerHeight)
+    $('.box-body').height(window.innerHeight)
+    $('.left-container').height(window.innerHeight)
+    $('.right-container').height(window.innerHeight)
+    //$('.image-container').height(600)
+    // $('.container').attr('padding', 0)
+  })
+</script>

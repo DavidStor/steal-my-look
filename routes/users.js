@@ -90,7 +90,7 @@ router.post('/profilepic',upload.single('avatar'), function(req, res) {
 
 // GET new post //
 router.get('/newpost', function(req, res) {
-  res.render('newpost');
+  res.render('newpost',{user:req.user, hello:'q'});
 })
 
 // POST new post //
