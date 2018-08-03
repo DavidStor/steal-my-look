@@ -39,7 +39,12 @@ const upload2=multer({
 router.get('/wardrobe', function(req, res) {
  var owner = req.user._id;
  User.findbyID(owner)
- res.render('wardrobe', {wardrobe: wardrobe})
+ .populate('wardrobe')
+ .exec(function(err,user){
+
+   res.render('wardrobe', {wardrobe: user.wardrobe,
+   user:req.user})
+ })
 })
 router.get('/profile', function(req, res) {
   console.log(req.user.username);
@@ -59,7 +64,8 @@ router.get('/feed', function(req, res) {
         console.log('error finding posts');
       } else {
         console.log('successfully found posts');
-        res.render('feed', {posts: posts})
+        res.render('feed', {posts: posts,
+        user:req.user})
       }
     })
 })
@@ -77,7 +83,8 @@ router.get('/feed/:id', function(req, res) {
         console.log('error finding single post');
       } else {
         console.log('successfully found single post');
-        res.render('feed', {posts: [post]})
+        res.render('feed', {posts: [post],
+        user:req.user})
       }
     })
 })
@@ -85,12 +92,16 @@ router.get('/feed/:id', function(req, res) {
 // POST profile pic //
 router.post('/profilepic',upload.single('avatar'), function(req, res) {
   console.log(req.file)
-  res.redirect('/profile')
+  res.redirect('/editprofile')
 })
 
 // GET new post //
 router.get('/newpost', function(req, res) {
+<<<<<<< HEAD
   res.render('newpost',{user:req.user, hello:'q'});
+=======
+  res.render('newpost',{user:req.user});
+>>>>>>> 3c95cd26a46475136101b50832f2294a3ab7c2f7
 })
 
 // POST new post //
@@ -200,12 +211,39 @@ router.post('/newpost',upload2.single('imgSrc'), function(req, res) {
 
 // GET edit profile //
 router.get('/editprofile', function(req, res) {
-  res.render('editprofile');
+  res.render('editprofile',{user:req.user,editprofile:req.user});
 })
 
 // POST edit profile //
 router.post('/editprofile', function(req, res) {
-  User.update({_id: req.user._id}, {description: req.body.newDes}, )
+  req.check('firstname', 'First Name is required').notEmpty();
+  req.check('lastname', 'Last Name is required').trim().notEmpty();
+
+  console.log("before validation edit");
+  var errors = req.validationErrors();
+  var returnObj = {
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    bio:req.body.bio
+  }
+  if(errors) {
+    //TO-DO Redo this so that if the user is wrong it will put him back
+    console.log(errors);
+    res.render("editprofile", {
+      errors: errors,
+      editprofile:returnObj,
+      user:req.user
+    });
+  } else {
+    User.update({_id:req.user._id},{bio:req.body.bio,lastname: req.body.lastname,firstname: req.body.firstname},function(err){
+      if(err){
+        console.log('line 241')
+      }else{
+        res.redirect('/profile');
+      }
+    })
+  }
+
 })
 
 // GET wardrobe //
@@ -215,7 +253,8 @@ router.get('/wardrobe', function(req, res) {
     var wardrobe
   })
 
-  res.render('wardrobe', {wardrobe: wardrobe})
+  res.render('wardrobe', {wardrobe: wardrobe,
+  user:req.user})
 })
 
 module.exports = router;
