@@ -265,22 +265,66 @@ router.post('/emoji/:postId/1', function(req, res) {
 
   } */
   console.log('inside post emoji 1');
-  var current =0;
   Post.findById(req.params.postId, function(err, thePost) {
     if (err) {
       console.log('error finding post', err);
     } else {
       console.log(thePost);
-      //current= thePost.ratings.smileys;
+      var current= thePost.ratings.smileys;
       console.log('successfully found post');
       console.log('post is', thePost);
-      // thePost.set({ratings: {
-      //   smileys: current + 1
-      // }});
-
+      thePost.set({ratings: {
+        smileys: current + 1
+      }});
+      res.render("feed" , {posts: thePost,
+        user:req.user});
     }
   })
   })
+
+  router.post('/emoji/:postId/2', function(req, res) {
+    /* Post.update({_id: postId}, function(err, updatedObject) {
+  
+    } */
+    console.log('inside post emoji 2');
+    Post.findById(req.params.postId, function(err, thePost) {
+      if (err) {
+        console.log('error finding post', err);
+      } else {
+        console.log(thePost);
+        var current= thePost.ratings.smileys;
+        console.log('successfully found post');
+        console.log('post is', thePost);
+        thePost.set({ratings: {
+          smileys: current + 1
+        }});
+        res.render("feed" , {posts: posts,
+          user:req.user});
+      }
+    })
+    })
+
+    router.post('/emoji/:postId/3', function(req, res) {
+      /* Post.update({_id: postId}, function(err, updatedObject) {
+    
+      } */
+      console.log('inside post emoji 3');
+      Post.findById(req.params.postId, function(err, thePost) {
+        if (err) {
+          console.log('error finding post', err);
+        } else {
+          console.log(thePost);
+          var current= thePost.ratings.smileys;
+          console.log('successfully found post');
+          console.log('post is', thePost);
+          thePost.set({ratings: {
+            likes: current + 1
+          }});
+          res.render("feed" , {posts: posts,
+            user:req.user});
+        }
+      })
+      })
 
 
 
