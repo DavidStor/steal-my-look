@@ -254,7 +254,9 @@ router.post('/emoji/:postId/1', function(req, res) {
       thePost.set({ratings: {
         smileys: current + 1
       }});
+      console.log(thePost.ratings.smileys);
       res.render('feed', {posts: thePost})
+
     }
   })
   })
