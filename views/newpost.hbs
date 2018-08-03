@@ -46,24 +46,14 @@
     <div class="box box-info">
       <div class="box-body">
         <div class="left-container col-sm-6">
+          <form method="POST" action='/profilepic' enctype="multipart/form-data">
           <div class="image-container col-md-12">
-            <div align="hahaha center">
-              <form method="POST" action='/profilepic' enctype="multipart/form-data">
-                <input id="post-image-upload" onchange="submitFile()" name="avatar" class="hidden" type="file">
-              </form>
-              <div class="yesyesyes" style="color:#999;">
-                <p>Click here to upload a new post!</p>
-              </div>
+            <div align="newpictext center">
+                <input id="look-image-upload" onchange="submitFile()" name="avatar" class="hidden" type="file">
+                <div style="color:#999;" >Click here to upload a new look!</div>
             </div>
           </div>
-
-          <!-- <div class="boxes-container col-md-6 row">
-             <div class="col-md-12 boxesCR">
-                 Link: <input ></input><br>
-                 Price: <input></input><br>
-                 Description: <input></input><br>
-             </div>
-          </div> -->
+          </form>
         </div>
         <div class="right-container col-sm-6">
           <div class="boxes-container col-md-offset-2 col-md-6 row">
@@ -113,8 +103,8 @@
     background-color: #f8f8f8;
 
   }
-  .yesyesyes {
-    fontcolor red;
+  .newpictext {
+    margin-top: 20px;
     padding-top: 20px
   }
   .boxes-container {
