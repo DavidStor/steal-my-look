@@ -17,42 +17,22 @@
               <div align="center"> <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive">
                 <h4 style="color:#00b1b1; display: inline-block; margin-right: 10px;">{{user.firstname}} {{user.lastname}}</h4>
                 <form method="GET" action="/editprofile">
-                  <button class="btn btn-primary"><i class="fa fa-pencil"></i> Edit Profile</button>
+                  <button class="btn btn-prima  ry"><i class="fa fa-pencil"></i> Edit Profile</button>
                 </form>
               </div>
               {{/if}}
               <br>
             </div>
             <div class="col-sm-6">
-              <br>
+              <h4 style="color: black; display: inline-block; margin-right: 10px;"><b>Bio:</b> {{user.bio}}</h4><br>
+              <h4 style="color: black; display: inline-block; margin-right: 10px;"><b>0</b> followers</h4><br>
+              <h4 style="color: black; display: inline-block; margin-right: 10px;"><b>0</b> following</h4>
               <br>
               <br>
               <form method="GET" action="/newpost">
                 <button class="btn1 btn-success"><i class="fa fa-camera"></i> Post a Look</button>
               </form>
             </div>
-            <div class="clearfix"></div>
-            <hr style="margin: 5px 0 5px 0;">
-
-
-            <div class="col-sm-5 col-xs-6 tital " >Bio:</div>
-            <div class="col-sm-7 col-xs-6 " style="font-size: 15px">{{user.bio}}</div>
-
-            <div class="clearfix"></div>
-            <div class="bot-border"></div>
-
-            <div class="col-sm-5 col-xs-6 tital " >Followers:</div>
-            <div class="col-sm-7"> 0</div>
-
-            <div class="clearfix"></div>
-            <div class="bot-border"></div>
-
-            <div class="col-sm-5 col-xs-6 tital " >Following:</div>
-            <div class="col-sm-7"> 0</div>
-
-            <div class="clearfix"></div>
-            <div class="bot-border"></div>
-
           </div>
         </div>
       </div>
