@@ -38,7 +38,7 @@ const upload2=multer({
 // GET profile //
 router.get('/wardrobe', function(req, res) {
  var owner = req.user._id;
- User.findbyID(owner)
+ User.findbyId(owner)
  .populate('wardrobe')
  .exec(function(err,user){
 
