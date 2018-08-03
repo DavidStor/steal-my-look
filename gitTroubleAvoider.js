@@ -9,16 +9,6 @@ var fs = require('fs');
 import path from "path";
 var multer  = require('multer')
 
-// GET about us //
-router.get('/about', function(req, res) {
-  res.render('about');
-})
-
-// GET error page //
-router.get('/error', function(req, res) {
-  res.render('autisticScreeching');
-})
-
 
 
 module.exports = router;

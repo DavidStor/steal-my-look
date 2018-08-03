@@ -406,7 +406,8 @@ router.post('/emoji/:postId/3', function(req, res) {
 
   // GET about us //
   router.get('/aboutus', function(req, res) {
-    res.render('aboutus');
+    console.log(req.user);
+    res.render('aboutus', {user: req.user});
   })
 
   // GET error page //
