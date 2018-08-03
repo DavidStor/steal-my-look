@@ -58,6 +58,7 @@
 
     <div id="myCarousel" class="row carousel slide" data-ride="carousel">
       <!-- Wrapper for slides -->
+{{#each wardrobe.Look}}
       <div class="carousel-inner">
 
         <div class="item active">
@@ -66,12 +67,12 @@
             <li class="col-sm-12">
               <div class="row">
                 <div class="thumbnail col-sm-3">
-                  <a href="#"><img src="/images/avatar-1533250276178.jpg" alt=""></a>
+                  <a href="#"><img src="{{this.headwear.image}}" alt=""></a>
                 </div>
                 <div class="col-sm-9">
-                  <h1 class="product-title"><b>Dingo Dog Bones</b></h1>
-                  <h5 class="product-description">The best dog bones of all time. Holy crap. Your dog will be begging for these things! I got curious once and ate one myself. I'm a fan.</h5>
-                  <h4 class="product-price">$12.99</h4>
+                  <h1 class="product-title"><b>Headwear</b></h1>
+                  <h5 class="product-description">{{this.headwear.description}}</h5>
+                  <h4 class="product-price">${{this.headwear.price}}</h4>
                   <br>
                   <br>
                   <a class="btn btn-success btn-mini" href="#" style="margin-top: 17px;">Add to Cart</a>
@@ -79,12 +80,12 @@
               </div>
               <div class="row">
                 <div class="thumbnail col-sm-3">
-                  <a href="#"><img src="/images/avatar-1533250276178.jpg" alt=""></a>
+                  <a href="#"><img src="{{this.top.image}}" alt=""></a>
                 </div>
                 <div class="col-sm-9">
-                  <h1 class="product-title"><b>Dingo Dog Bones</b></h1>
-                  <h5 class="product-description">The best dog bones of all time. Holy crap. Your dog will be begging for these things! I got curious once and ate one myself. I'm a fan.</h5>
-                  <h4 class="product-price">$12.99</h4>
+                  <h1 class="product-title"><b>Top</b></h1>
+                  <h5 class="product-description">{{this.top.description}}</h5>
+                  <h4 class="product-price">${{this.top.price}}</h4>
                   <br>
                   <br>
                   <a class="btn btn-success btn-mini" href="#" style="margin-top: 17px;">Add to Cart</a>
@@ -92,12 +93,12 @@
               </div>
               <div class="row">
                 <div class="thumbnail col-sm-3">
-                  <a href="#"><img src="/images/avatar-1533250276178.jpg" alt=""></a>
+                  <a href="#"><img src="{{this.pants.image}}" alt=""></a>
                 </div>
                 <div class="col-sm-9">
-                  <h1 class="product-title"><b>Dingo Dog Bones</b></h1>
-                  <h5 class="product-description">The best dog bones of all time. Holy crap. Your dog will be begging for these things! I got curious once and ate one myself. I'm a fan.</h5>
-                  <h4 class="product-price">$12.99</h4>
+                  <h1 class="product-title"><b>Pants</b></h1>
+                  <h5 class="product-description">{{this.pants.description}}</h5>
+                  <h4 class="product-price">${{this.pants.price}}</h4>
                   <br>
                   <br>
                   <a class="btn btn-success btn-mini" href="#" style="margin-top: 17px;">Add to Cart</a>
@@ -105,12 +106,12 @@
               </div>
               <div class="row">
                 <div class="thumbnail col-sm-3">
-                  <a href="#"><img src="/images/avatar-1533250276178.jpg" alt=""></a>
+                  <a href="#"><img src="{{this.footwear.image}}" alt=""></a>
                 </div>
                 <div class="col-sm-9">
-                  <h1 class="product-title"><b>Dingo Dog Bones</b></h1>
-                  <h5 class="product-description">The best dog bones of all time. Holy crap. Your dog will be begging for these things! I got curious once and ate one myself. I'm a fan.</h5>
-                  <h4 class="product-price">$12.99</h4>
+                  <h1 class="product-title"><b>Footwear</b></h1>
+                  <h5 class="product-description">{{this.footwear.description}}</h5>
+                  <h4 class="product-price">${{this.footwear.price}}</h4>
                   <br>
                   <br>
                   <a class="btn btn-success btn-mini" href="#" style="margin-top: 17px;">Add to Cart</a>
@@ -123,7 +124,9 @@
               </div>
             </li>
           </ul>
-        </div><!-- /Slide1 -->
+        </div>
+
+        <!-- /Slide1 -->
 
 <!--
         <div class="item">
@@ -179,6 +182,8 @@
         </div> /Slide2 -->
 
       </div><!-- /Wrapper for slides .carousel-inner -->
+{{/each}}
+
 
       <!-- Control box -->
       <div class="control-box">
@@ -187,7 +192,10 @@
       </div><!-- /.control-box -->
 
     </div><!-- /#myCarousel -->
+
+
   </div><!-- /.col-sm-12 -->
+
 </div><!-- /.row -->
 
 <style>
