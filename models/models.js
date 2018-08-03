@@ -42,8 +42,8 @@ var userSchema = new mongoose.Schema({
    wardrobe: [{
    type: mongoose.Schema.ObjectId,
    ref: 'Wardrobe'
- }],
- bio:String
+  }],
+  bio:String
 });
 
 var postSchema = new mongoose.Schema({
