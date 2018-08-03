@@ -1,0 +1,84 @@
+<br>
+<h1>Edit Profile</h1>
+<hr>
+	<div class="row">
+    <!-- left column -->
+    <div class="col-md-3">
+      {{#if user.profilePic}}
+      <div align="center"> <img alt="User Pic" src="/images/{{user.profilePic}}" id="profile-image1" class="img-circle img-responsive">
+        <form method="POST" action='/profilepic' enctype="multipart/form-data">
+          <input id="profile-image-upload" onchange="submitFile()" name="avatar" class="hidden" type="file">
+        </form>
+        <div style="color:#999;" >Click here to change profile image</div>
+      </div>
+      {{else}}
+      <div align="center"> <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive">
+        <form method="POST" action='/profilepic' enctype="multipart/form-data">
+          <input id="profile-image-upload" onchange="submitFile()" name="avatar" class="hidden" type="file">
+        </form>
+        <div style="color:#999;" >Click here to change profile image</div>
+      </div>
+      {{/if}}
+      {{#each errors}}
+          <center><div class="well2 alert alert-danger" role="alert">{{msg}}</div></center>
+      {{/each}}
+    </div>
+
+
+
+      <!-- edit form column -->
+    <div class="col-md-9 personal-info">
+      <!-- <div class="alert alert-info alert-dismissable">
+        <a class="panel-close close" data-dismiss="alert">×</a>
+        <i class="fa fa-coffee"></i>
+        This is an <strong>.alert</strong>. ERROR
+      </div> -->
+      <center><h2 style="padding-left: 130px">Profile Info</h2></center>
+      <br>
+      <br>
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Bio:</label>
+          <div class="col-lg-8">
+            <input required class="form-control" type="text" name="bio" value="{{editprofile.bio}}">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">First name:</label>
+          <div class="col-lg-8">
+            <input required class="form-control" type="text" name="firstname" value="{{editprofile.firstname}}">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Last name:</label>
+          <div class="col-lg-8">
+            <input required class="form-control" type="text" name="lastname" value="{{editprofile.lastname}}">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label"></label>
+          <div class="col-md-8">
+            <form method="POST" action="/editprofile">
+              <a class="btn btn-primary">Save Changes</a>
+            </form>
+            <span></span>
+            <a class="btn btn-danger" href="/profile">Cancel</a>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+<hr>
+
+<script>
+  $(function() {
+    $('#profile-image1').on('click', function() {
+        $('#profile-image-upload').click();
+    });
+  });
+  function submitFile() {
+    console.log(arguments);
+    document.querySelector('form').submit();
+  }
+  //
+</script>
