@@ -36,16 +36,6 @@ const upload2=multer({
 })
 
 // GET profile //
-router.get('/wardrobe', function(req, res) {
- var owner = req.user._id;
- User.findbyId(owner)
- .populate('wardrobe')
- .exec(function(err,user){
-
-   res.render('wardrobe', {wardrobe: user.wardrobe,
-   user:req.user})
- })
-})
 router.get('/profile', function(req, res) {
   console.log(req.user.username);
   res.render('profile', {user: req.user});
@@ -245,7 +235,7 @@ router.post('/editprofile', function(req, res) {
 router.post('/emoji', function(req, res) {
   console.log('req.user is ISSSSS', req.user);
   console.log('req.body is ISSSSS', req.body);
-  
+
 })
 
 
