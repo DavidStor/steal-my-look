@@ -83,25 +83,32 @@ router.get('/newpost', function(req, res) {
 
 // POST new post //
 router.post('/newpost', function(req, res) {
-  fs.writeFile("/public/images/", req.body.headImage, 'binary', function(err) {
+  fs.readFile(req.body.headImage,function(err,data){
+    if(err){
+      console.log(err);
+    }else{
+      console.log(data)
+    }
+  })
+  fs.writeFile("../public/images/"+req.body.headImage, req.body.headImage, 'binary', function(err) {
     if(err)
       console.log(err);
     else
       console.log("The file was saved!");
   });
-  fs.writeFile("/public/images/", req.body.topImage, 'binary', function(err) {
+  fs.writeFile("../public/images/"+req.body.topImage, req.body.topImage, 'binary', function(err) {
     if(err)
       console.log(err);
     else
       console.log("The file was saved!");
   });
-  fs.writeFile("/public/images/", req.body.pantImage, 'binary', function(err) {
+  fs.writeFile("../public/images/"+req.body.pantImage, req.body.pantImage, 'binary', function(err) {
     if(err)
       console.log(err);
     else
       console.log("The file was saved!");
   });
-  fs.writeFile("/public/images/", req.body.footImage, 'binary', function(err) {
+  fs.writeFile("../public/images/"+req.body.footwearImage, req.body.footImage, 'binary', function(err) {
     if(err)
       console.log(err);
     else
@@ -149,7 +156,7 @@ router.post('/newpost', function(req, res) {
     description: req.body.footwearDes,
     type: "footwear",
     price: req.body.footwearPrice,
-    image: req.body.footImage
+    image: req.body.footwearImage
   })
 
   newHeadwear.save(function(err,header) {
