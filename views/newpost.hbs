@@ -39,7 +39,9 @@
     </form>
   </div>
 </div> -->
+<script>
 
+</script>
 <div class="panel-main panel-default">
   <div class="panel-heading"><center><h4>New Post</h4></center></div>
   <div class="panel-body">
@@ -48,11 +50,19 @@
         <div class="left-container col-sm-6">
           <div class="image-container col-md-12">
             <div align="hahaha center">
-              <form method="POST" action='/profilepic' enctype="multipart/form-data">
-                <input id="post-image-upload" onchange="submitFile()" name="avatar" class="hidden" type="file">
-              </form>
+              <form method="POST" action='/lookpic' enctype="multipart/form-data">
+
               <div class="yesyesyes" style="color:#999;">
-                <p>Click here to upload a new post!</p>
+                <input id="post-image-upload" style = 'opacity: 0;
+    border: none;
+    border-radius: 3px;
+    background: grey;
+    position: absolute;
+    left: 0px;
+    width: 100%;
+    top: 0px;
+    height: 100%;' onchange="readURLBig(this);" name="avatar" type="file">
+                <img id="bigPic" class='hidden' src="#" />
               </div>
             </div>
           </div>
@@ -71,26 +81,33 @@
                  Link: <input ></input><br>
                  Price: <input></input><br>
                  Description: <input></input><br>
+                 Image: <input type='file' onchange="readURLHead(this);" />
+    <img id="headPic" src="#" alt="your image" />
              </div>
              <div class="col-md-12 boxesCR">
                  Link: <input ></input><br>
                  Price: <input></input><br>
                  Description: <input></input><br>
+                 Image: <input type='file' onchange="readURLTop(this);" /><img id="topPic" src="#" alt="your image" />
              </div>
              <div class="col-md-12 boxesCR">
                  Link: <input ></input><br>
                  Price: <input></input><br>
                  Description: <input></input><br>
+                 Image: <input type='file' onchange="readURLPant(this);" /><img id="pantPic" src="#" alt="your image" />
              </div>
              <div class="col-md-12 boxesCR">
                  Link: <input ></input><br>
                  Price: <input></input><br>
                  Description: <input></input><br>
+                 Image: <input type='file' onchange="readURLFoot(this);" /><img id="footPic" src="#" alt="your image" />
              </div>
+             <input type='submit' value="submit">
           </div>
         </div>
         <div class="clearfix"></div>
         <hr style="margin: 5px 0 5px 0;">
+      </form>
       </div>
     </div>
   </div>
@@ -114,7 +131,7 @@
 
   }
   .yesyesyes {
-    fontcolor red;
+    color: red;
     padding-top: 20px
   }
   .boxes-container {
@@ -140,5 +157,86 @@
     $('.right-container').height(window.innerHeight)
     //$('.image-container').height(600)
     // $('.container').attr('padding', 0)
+
   })
+  function readURLHead(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#headPic')
+                        .attr('src', e.target.result)
+                        .width(150)
+                        .height(200);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+  function readURLTop(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#topPic')
+                        .attr('src', e.target.result)
+                        .width(150)
+                        .height(200);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+      function readURLPant(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#pantPic')
+                            .attr('src', e.target.result)
+                            .width(150)
+                            .height(200);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+      function readURLFoot(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#footPic')
+                            .attr('src', e.target.result)
+                            .width(150)
+                            .height(200);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+      function readURLBig(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+
+                        $('#bigPic').attr('src', e.target.result)
+                        var height = $('#bigPic').attr('height')
+                        var width = $('#bigPic').attr('width')
+                        if(height/width>$('.yesyesyes').attr('height')/$('.yesyesyes').attr('width')){
+                          var ratio = $('.yesyesyes').attr('width')/width;
+                          $('#bigPic').attr('height',ratio*height)
+                          $('#bigPic').attr('width',ratio*width)
+                        }else{
+                          var ratio = $('.yesyesyes').attr('height')/height;
+                          $('#bigPic').attr('height',ratio*height)
+                          $('#bigPic').attr('width',ratio*width)
+                        }
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+                $('#bigPic').removeClass('hidden')
+            }
 </script>
