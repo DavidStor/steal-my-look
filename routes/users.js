@@ -284,7 +284,7 @@ router.post('/emoji/:postId/1', function(req, res) {
         smileys: current + 1
       }});
       res.render("feed" , {posts: thePost,
-        user:req.user});
+        user: thePost.fromUser});
     }
   })
   })
@@ -305,8 +305,8 @@ router.post('/emoji/:postId/1', function(req, res) {
         thePost.set({ratings: {
           smileys: current + 1
         }});
-        res.render("feed" , {posts: posts,
-          user:req.user});
+        res.render("feed" , {posts: thePost,
+          user: thePost.fromUser});
       }
     })
     })
@@ -327,8 +327,8 @@ router.post('/emoji/:postId/1', function(req, res) {
           thePost.set({ratings: {
             likes: current + 1
           }});
-          res.render("feed" , {posts: posts,
-            user:req.user});
+          res.render("feed" , {posts: thePost,
+            user: thePost.fromUser});
         }
       })
       })
