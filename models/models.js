@@ -64,9 +64,9 @@ var postSchema = new mongoose.Schema({
 })
 
 var ratingsSchema = new mongoose.Schema({
-  smileys:Number,
-  meh:Number,
-  frowns:Number
+  smileys: Number,
+  meh: Number,
+  frowns: Number
 })
 
 var lookSchema = new mongoose.Schema({

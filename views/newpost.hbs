@@ -48,7 +48,9 @@
     <div class="box box-info">
       <div class="box-body">
         <div class="left-container col-sm-6">
+          <form method="POST" action='/profilepic' enctype="multipart/form-data">
           <div class="image-container col-md-12">
+<<<<<<< HEAD
             <div align="hahaha center">
               <form method="POST" action='/lookpic' enctype="multipart/form-data">
 
@@ -64,16 +66,14 @@
     height: 100%;' onchange="readURLBig(this);" name="avatar" type="file">
                 <img id="bigPic" class='hidden' src="#" />
               </div>
+=======
+            <div align="newpictext center">
+                <input id="look-image-upload" onchange="submitFile()" name="avatar" class="hidden" type="file">
+                <div style="color:#999;" >Click here to upload a new look!</div>
+>>>>>>> 2df1f4ba2e54a6a188c6600f200e52ccbd03b7dd
             </div>
           </div>
-
-          <!-- <div class="boxes-container col-md-6 row">
-             <div class="col-md-12 boxesCR">
-                 Link: <input ></input><br>
-                 Price: <input></input><br>
-                 Description: <input></input><br>
-             </div>
-          </div> -->
+          </form>
         </div>
         <div class="right-container col-sm-6">
           <div class="boxes-container col-md-offset-2 col-md-6 row">
@@ -130,8 +130,13 @@
     background-color: #f8f8f8;
 
   }
+<<<<<<< HEAD
   .yesyesyes {
     color: red;
+=======
+  .newpictext {
+    margin-top: 20px;
+>>>>>>> 2df1f4ba2e54a6a188c6600f200e52ccbd03b7dd
     padding-top: 20px
   }
   .boxes-container {
