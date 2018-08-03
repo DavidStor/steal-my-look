@@ -28,24 +28,24 @@ router.get('/profile', function(req, res) {
   res.render('profile', {user: req.user});
 });
 
-// GET feed //
-router.get('/feed', function(req, res) {
-  Post.find()
-    .populate('fromUser')
-    .populate({
-      path:'Look',
-      populate:[{path:'headwear'},{path:'top'},{path:'pants'},{path:'footwear'}]
-    })
-    .exec(function(error, posts) {
-      if (error) {
-        console.log('error finding posts');
-      } else {
-        console.log('successfully found posts');
-        console.log(posts)
-        res.render('feed', {posts: posts,user: req.user})
-      }
-    })
-})
+// // GET feed //
+// router.get('/feed', function(req, res) {
+//   Post.find()
+//     .populate('fromUser')
+//     .populate({
+//       path:'Look',
+//       populate:[{path:'headwear'},{path:'top'},{path:'pants'},{path:'footwear'}]
+//     })
+//     .exec(function(error, posts) {
+//       if (error) {
+//         console.log('error finding posts');
+//       } else {
+//         console.log('successfully found posts');
+//         console.log(posts)
+//         res.render('feed', {posts: posts,user: req.user})
+//       }
+//     })
+// })
 
 // POST profile pic //
 
