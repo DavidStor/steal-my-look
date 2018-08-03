@@ -8,6 +8,8 @@ var Product = models.Product;
 var Look = models.Look;
 var fs = require('fs');
 import path from "path";
+
+// GET wardrobe //
 router.get('/wardrobe', function(req, res) {
   var owner = req.user._id;
   User.findById(owner)
@@ -27,5 +29,9 @@ router.get('/wardrobe', function(req, res) {
     }
   })
 })
+
+// POST wardrobe //
+
+
 
 module.exports = router;
