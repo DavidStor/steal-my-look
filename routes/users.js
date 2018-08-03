@@ -22,20 +22,10 @@ const storage = multer.diskStorage({
     })
   }
 })
-const upload=multer({
+const upload = multer({
   storage:storage
 })
-const storage2 = multer.diskStorage({
-  destination: path.resolve(__dirname,'../public/images/'),
-  filename:function(req,file,cb){
-    var coolbeans = file.fieldname + '-'+Date.now()+path.extname(file.originalname);
-    cb(null,coolbeans)
-  }
-})
-const upload2=multer({
-  storage:storage2
-})
-
+//data
 // GET profile //
 router.get('/profile', function(req, res) {
   console.log(req.user.username);
@@ -92,7 +82,38 @@ router.get('/newpost', function(req, res) {
 })
 
 // POST new post //
-router.post('/newpost',upload2.single('imgSrc'), function(req, res) {
+router.post('/newpost', function(req, res) {
+  fs.readFile(req.body.headImage,function(err,data){
+    if(err){
+      console.log(err);
+    }else{
+      console.log(data)
+    }
+  })
+  fs.writeFile("../public/images/"+req.body.headImage, req.body.headImage, 'binary', function(err) {
+    if(err)
+      console.log(err);
+    else
+      console.log("The file was saved!");
+  });
+  fs.writeFile("../public/images/"+req.body.topImage, req.body.topImage, 'binary', function(err) {
+    if(err)
+      console.log(err);
+    else
+      console.log("The file was saved!");
+  });
+  fs.writeFile("../public/images/"+req.body.pantImage, req.body.pantImage, 'binary', function(err) {
+    if(err)
+      console.log(err);
+    else
+      console.log("The file was saved!");
+  });
+  fs.writeFile("../public/images/"+req.body.footwearImage, req.body.footImage, 'binary', function(err) {
+    if(err)
+      console.log(err);
+    else
+      console.log("The file was saved!");
+  });
   // var counter = 0;
   // if(req.body.headwearAmazon.trim().length !=0 && req.body.headwearDes.trim().length !=0 && req.body.headwearPrice.trim().length !=0 && req.body.headwearImage.trim().length !=0){
   //   counter++;
@@ -114,7 +135,7 @@ router.post('/newpost',upload2.single('imgSrc'), function(req, res) {
     description: req.body.headwearDes,
     type: "headwear",
     price: req.body.headwearPrice,
-    image: req.body.filename
+    image: req.body.headImage
   })
   var newTop = new Product({
     Amazonlink: req.body.topAmazon,
@@ -128,7 +149,7 @@ router.post('/newpost',upload2.single('imgSrc'), function(req, res) {
     description: req.body.pantsDes,
     type: "pants",
     price: req.body.pantsPrice,
-    image: req.body.pantsImage
+    image: req.body.pantImage
   })
   var newFootwear = new Product({
     Amazonlink: req.body.footwearAmazon,
@@ -169,24 +190,33 @@ router.post('/newpost',upload2.single('imgSrc'), function(req, res) {
                       console.log('error saving new look');
                     } else {
                       console.log('successfully saved new look');
-                      var newPost = new Post({
-                        image: req.body.image,
-                        ratings: new Rating({
-                          smileys: 0,
-                          meh: 0,
-                          frowns: 0
-                        }),
-                        Look: looker.id,
-                        fromUser: req.user._id,
+                      var newRat = new Rating({
+                        smileys:0,
+                        meh:0,
+                        frowns:0
                       })
-                      newPost.save(function(err) {
-                        if (err) {
-                          console.log('error adding new post', err);
-                        } else {
-                          console.log('successfully saved new post');
-                          res.redirect('/');
+                      newRat.save(function(err,rating){
+                        if(err){
+                          console.log(err)
+                        }else{
+                          var newPost = new Post({
+                            image: req.body.image,
+                            likes: 0,
+                            Look: looker.id,
+                            fromUser: req.user._id,
+                            ratings:rating._id
+                          })
+                          newPost.save(function(err) {
+                            if (err) {
+                              console.log('error adding new post');
+                            } else {
+                              console.log('successfully saved new post');
+                              res.redirect('/');
+                            }
+                          })
                         }
                       })
+
                     }
                   })
                 }
@@ -242,24 +272,66 @@ router.post('/emoji/:postId/1', function(req, res) {
 
   } */
   console.log('inside post emoji 1');
-  var current =0;
   Post.findById(req.params.postId, function(err, thePost) {
     if (err) {
       console.log('error finding post', err);
     } else {
       console.log(thePost);
-      //current= thePost.ratings.smileys;
+      var current= thePost.ratings.smileys;
       console.log('successfully found post');
       console.log('post is', thePost);
       thePost.set({ratings: {
         smileys: current + 1
       }});
-      console.log(thePost.ratings.smileys);
-      res.render('feed', {posts: thePost})
-
+      res.render("feed" , {posts: thePost,
+        user:req.user});
     }
   })
   })
+
+  router.post('/emoji/:postId/2', function(req, res) {
+    /* Post.update({_id: postId}, function(err, updatedObject) {
+
+    } */
+    console.log('inside post emoji 2');
+    Post.findById(req.params.postId, function(err, thePost) {
+      if (err) {
+        console.log('error finding post', err);
+      } else {
+        console.log(thePost);
+        var current= thePost.ratings.smileys;
+        console.log('successfully found post');
+        console.log('post is', thePost);
+        thePost.set({ratings: {
+          smileys: current + 1
+        }});
+        res.render("feed" , {posts: posts,
+          user:req.user});
+      }
+    })
+    })
+
+    router.post('/emoji/:postId/3', function(req, res) {
+      /* Post.update({_id: postId}, function(err, updatedObject) {
+
+      } */
+      console.log('inside post emoji 3');
+      Post.findById(req.params.postId, function(err, thePost) {
+        if (err) {
+          console.log('error finding post', err);
+        } else {
+          console.log(thePost);
+          var current= thePost.ratings.smileys;
+          console.log('successfully found post');
+          console.log('post is', thePost);
+          thePost.set({ratings: {
+            likes: current + 1
+          }});
+          res.render("feed" , {posts: posts,
+            user:req.user});
+        }
+      })
+      })
 
 
 
