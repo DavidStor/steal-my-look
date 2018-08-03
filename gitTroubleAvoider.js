@@ -13,8 +13,3 @@ router.get('/wardrobe', function(req, res) {
   res.render('wardrobe', {wardrobe: wardrobe,
   user:req.user})
 })
-
-// POST Emoji //
-router.post('/emoji', function(req, res) {
-  console.log(req);
-})
