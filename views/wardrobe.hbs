@@ -1,0 +1,49 @@
+<div class ='row'>
+  <div class = 'col-md-6'>
+  </div>
+  <div class = 'col-md-6'>
+    <div id='headwearContainer'>
+      {{#each wardrobe.headwear}}
+      <div class = 'col-md-6'>
+        <img src='/public/images/{{this.image}}'/>
+      </div>
+      {{/each}}
+    </div>
+    <div class = 'hidden' id='topContainer'>
+      {{#each wardrobe.tops}}
+      <div class = 'col-md-6'>
+        <img src='/public/images/{{this.image}}'/>
+      </div>
+      {{/each}}
+    </div>
+    <div class = 'hidden'  id='pantContainer'>
+      {{#each wardrobe.pants}}
+      <div class = 'col-md-6'>
+        <img src='/public/images/{{this.image}}'/>
+      </div>
+      {{/each}}
+    </div>
+    <div class = 'hidden'  id='footContainer'>
+      {{#each wardrobe.footwear}}
+      <div class = 'col-md-6'>
+        <img src='/public/images/{{this.image}}'/>
+      </div>
+      {{/each}}
+    </div>
+    <div class = 'hidden well'  id='lookContainer'>
+      {{#each user.looks}}
+      <div class = 'col-md-6'>
+        <img src='/public/images/{{this.headwear.image}}'/>
+        <img src='/public/images/{{this.top.image}}'/>
+        <img src='/public/images/{{this.pants.image}}'/>
+        <img src='/public/images/{{this.footwear.image}}'/>
+      </div>
+      {{/each}}
+    </div>
+  </div<
+</div>
+<style>
+.hidden{
+  display:none
+}
+</style>
