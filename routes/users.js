@@ -36,16 +36,6 @@ const upload2=multer({
 })
 
 // GET profile //
-router.get('/wardrobe', function(req, res) {
- var owner = req.user._id;
- User.findbyId(owner)
- .populate('wardrobe')
- .exec(function(err,user){
-
-   res.render('wardrobe', {wardrobe: user.wardrobe,
-   user:req.user})
- })
-})
 router.get('/profile', function(req, res) {
   console.log(req.user.username);
   res.render('profile', {user: req.user});
@@ -123,7 +113,7 @@ router.post('/newpost',upload2.single('imgSrc'), function(req, res) {
     description: req.body.headwearDes,
     type: "headwear",
     price: req.body.headwearPrice,
-    image: req.file.filename
+    image: req.body.filename
   })
   var newTop = new Product({
     Amazonlink: req.body.topAmazon,
@@ -152,17 +142,17 @@ router.post('/newpost',upload2.single('imgSrc'), function(req, res) {
       console.log('error adding new headwear');
     } else {
       console.log('successfully saved new headwear');
-      newtop.save(function(err,topper) {
+      newTop.save(function(err,topper) {
         if (err) {
           console.log('error adding new top');
         } else {
           console.log('successfully saved new top');
-          newpants.save(function(err,panter) {
+          newPants.save(function(err,panter) {
             if (err) {
               console.log('error adding new pants');
             } else {
               console.log('successfully saved new pants');
-              newfootwear.save(function(err,footer) {
+              newFootwear.save(function(err,footer) {
                 if (err) {
                   console.log('error adding new footwear');
                 } else {
@@ -245,7 +235,7 @@ router.post('/editprofile', function(req, res) {
 router.post('/emoji', function(req, res) {
   console.log('req.user is ISSSSS', req.user);
   console.log('req.body is ISSSSS', req.body);
-  
+
 })
 
 
