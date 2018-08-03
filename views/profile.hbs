@@ -2,7 +2,7 @@
   <center><h2>{{user.username}}</h2></center>
 </div>
 <div class="row">
-  <div class="col-md-9" style="margin-left: 10%">
+  <div class="col-md-9" style="margin-left: 12.5%">
     <div class="panel panel-default">
       <div class="panel-heading"><h4> </h4></div>
       <div class="panel-body">
@@ -11,17 +11,9 @@
             <div class="col-sm-6">
               {{#if user.profilePic}}
               <div align="center"> <img alt="User Pic" src="/images/{{user.profilePic}}" id="profile-image1" class="img-circle img-responsive">
-                <form method="POST" action='/profilepic' enctype="multipart/form-data">
-                  <input id="profile-image-upload" onchange="submitFile()" name="avatar" class="hidden" type="file">
-                </form>
-                <div style="color:#999;" >click here to change profile image</div>
               </div>
               {{else}}
               <div align="center"> <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive">
-                <form method="POST" action='/profilepic' enctype="multipart/form-data">
-                  <input id="profile-image-upload" onchange="submitFile()" name="avatar" class="hidden" type="file">
-                </form>
-                <div style="color:#999;" >click here to change profile image</div>
               </div>
               {{/if}}
               <br>
@@ -29,7 +21,6 @@
             <div class="col-sm-6">
               <h4 style="color:#00b1b1; display: inline-block; margin-right: 10px;">{{user.firstname}} {{user.lastname}}</h4>
               <a href="/editprofile"><span class="glyphicon glyphicon-cog"></a>
-              <br>
               <br>
               <br>
               <br>
@@ -41,7 +32,7 @@
             <hr style="margin: 5px 0 5px 0;">
 
 
-            <div class="col-sm-5 col-xs-6 tital " >Description:</div>
+            <div class="col-sm-5 col-xs-6 tital " >Bio:</div>
             <div class="col-sm-7 col-xs-6 " style="font-size: 15px">I am an avid coder!</div>
 
             <div class="clearfix"></div>
