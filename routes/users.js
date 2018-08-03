@@ -6,6 +6,7 @@ var Post = models.Post;
 var Product = models.Product;
 var Look = models.Look;
 var Rating = models.Rating;
+var Wardrobe = models.Wardrobe;
 var fs = require('fs');
 import path from "path";
 var multer  = require('multer')
@@ -22,6 +23,31 @@ const upload = multer({
 })
 //data
 // GET profile //
+router.post('/wardrobe/:id',function(req,res){
+  Look.find({_id:req.params.id},function(err,looks){
+    if(err){
+      console.log(err);
+    }else{
+      var look = looks[0];
+      Wardrobe.findOne({_id:req.user.wardrobe},function(err,ward){
+        if(err){
+          console.log(err)
+        }else{
+          var a = ward.Look.concat(look)
+          Wardrobe.update({_id:req.user.wardrobe},{Look:a},function(err,updated){
+            if(err){
+              console.log(err);
+            }else{
+              res.redirect('/feed')
+              console.log(updated)
+            }
+          })
+        }
+      })
+
+    }
+  })
+})
 router.get('/profile', function(req, res) {
   console.log(req.user.username);
   res.render('profile', {user: req.user});

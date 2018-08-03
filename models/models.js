@@ -96,21 +96,9 @@ var productSchema = new mongoose.Schema({
   image: String,
 })
 var wardrobeSchema = new mongoose.Schema({
- headwear: [{
+ Look: [{
    type: mongoose.Schema.ObjectId,
-   ref: 'Product'
- }],
- tops: [{
-   type: mongoose.Schema.ObjectId,
-   ref: 'Product'
- }],
- pants: [{
-   type: mongoose.Schema.ObjectId,
-   ref: 'Product'
- }],
- footwear: [{
-   type: mongoose.Schema.ObjectId,
-   ref: 'Product'
+   ref: 'Look'
  }]
 })
 
