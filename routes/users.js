@@ -123,7 +123,7 @@ router.post('/newpost',upload2.single('imgSrc'), function(req, res) {
     description: req.body.headwearDes,
     type: "headwear",
     price: req.body.headwearPrice,
-    image: req.file.filename
+    image: req.body.filename
   })
   var newTop = new Product({
     Amazonlink: req.body.topAmazon,
