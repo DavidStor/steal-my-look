@@ -5,6 +5,7 @@ var User = models.User;
 var Post = models.Post;
 var Product = models.Product;
 var Look = models.Look;
+var Rating = models.Rating;
 var fs = require('fs');
 import path from "path";
 var multer  = require('multer')
@@ -170,11 +171,11 @@ router.post('/newpost',upload2.single('imgSrc'), function(req, res) {
                       console.log('successfully saved new look');
                       var newPost = new Post({
                         image: req.body.image,
-                        ratings: {
+                        ratings: new Rating({
                           smileys: 0,
                           meh: 0,
                           frowns: 0
-                        },
+                        }),
                         Look: looker.id,
                         fromUser: req.user._id,
                       })
@@ -250,10 +251,10 @@ router.post('/emoji/:postId/1', function(req, res) {
       //current= thePost.ratings.smileys;
       console.log('successfully found post');
       console.log('post is', thePost);
-      // thePost.set({ratings: {
-      //   smileys: current + 1
-      // }});
-
+      thePost.set({ratings: {
+        smileys: current + 1
+      }});
+      res.render('feed', {posts: thePost})
     }
   })
   })
