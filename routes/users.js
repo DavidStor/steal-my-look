@@ -5,7 +5,7 @@ var User = models.User;
 var Post = models.Post;
 var Product = models.Product;
 var Look = models.Look;
-var Rating = models.Ratings
+var Rating = models.Rating;
 var fs = require('fs');
 import path from "path";
 var multer  = require('multer')
@@ -291,7 +291,7 @@ router.post('/emoji/:postId/1', function(req, res) {
 
   router.post('/emoji/:postId/2', function(req, res) {
     /* Post.update({_id: postId}, function(err, updatedObject) {
-  
+
     } */
     console.log('inside post emoji 2');
     Post.findById(req.params.postId, function(err, thePost) {
@@ -313,7 +313,7 @@ router.post('/emoji/:postId/1', function(req, res) {
 
     router.post('/emoji/:postId/3', function(req, res) {
       /* Post.update({_id: postId}, function(err, updatedObject) {
-    
+
       } */
       console.log('inside post emoji 3');
       Post.findById(req.params.postId, function(err, thePost) {
