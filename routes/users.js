@@ -268,8 +268,8 @@ router.post('/emoji/:postId/1', function(req, res) {
                   } else {
                     console.log('inside final post.find');
                     console.log('posts are', posts);
-                    console.log('ratings for the 4th post should be', posts[3].ratings);
-                    console.log('smileys for the 4th post should be', posts[3].ratings.smileys);
+                    //console.log('ratings for the 4th post should be', posts[3].ratings);
+                    //console.log('smileys for the 4th post should be', posts[3].ratings.smileys);
                     res.render("feed" , {posts: posts,
                       user:req.user});
                     // res.json({updated: true})
@@ -314,8 +314,8 @@ router.post('/emoji/:postId/1', function(req, res) {
                     } else {
                       console.log('inside final post.find');
                       console.log('posts are', posts);
-                      console.log('ratings for the 4th post should be', posts[3].ratings);
-                      console.log('smileys for the 4th post should be', posts[3].ratings.meh);
+                      //console.log('ratings for the 4th post should be', posts[3].ratings);
+                      //console.log('smileys for the 4th post should be', posts[3].ratings.meh);
                       res.render("feed" , {posts: posts,
                         user:req.user});
                       // res.json({updated: true})
@@ -360,8 +360,8 @@ router.post('/emoji/:postId/3', function(req, res) {
                   } else {
                     console.log('inside final post.find');
                     console.log('posts are', posts);
-                    console.log('ratings for the 4th post should be', posts[3].ratings);
-                    console.log('smileys for the 4th post should be', posts[3].ratings.frowns);
+                    //console.log('ratings for the 4th post should be', posts[3].ratings);
+                    //console.log('smileys for the 4th post should be', posts[3].ratings.frowns);
                     res.render("feed" , {posts: posts,
                       user:req.user});
                     // res.json({updated: true})
