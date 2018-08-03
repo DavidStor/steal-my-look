@@ -1,52 +1,51 @@
 <div class="panel-main panel-default">
   <form method="POST" action="/newpost">
-  <div class="panel-heading">
-    <center><h4>New Post</h4>
-    <input type='submit' class="btn btn-primary" value='Submit'></center>
-  </div>
-  <div class="panel-body">
-    <div id="flex-container">
-
-        <div class="big_box" style="margin-top: 20px;">
-          <div align="hahaha center">
-            <div class="yesyesyes image-container"  style="display:flex;justify-content: center;flex-direction: row;position: relative;align-items: center;">
-              <input id="post-image-upload" style="cursor: pointer;opacity: 0;border: solid DodgerBlue 5px;border-radius: 3px;background: grey;width: 100%;height: 100%; position: absolute;top: 0;left: 0;right: 0;bottom: 0;" onchange="readURLBig(this);" name="avatar" type="file">
-              <img id="bigPic" class="hidden" src="#">
+    <div class="well panel-heading">
+      <center><h4>New Post</h4>
+      <input type='submit' class="btn btn-primary" value='Submit'></center>
+    </div>
+    <div class="panel-body">
+      <div id="flex-container">
+          <div class="big_box" style="margin-top: 20px; border-radius: 5px;">
+            <div align="hahaha center">
+              <div class="yesyesyes image-container"  style="display:flex;justify-content: center;flex-direction: row;position: relative;align-items: center;">
+                <input id="post-image-upload" style="cursor: pointer;opacity: 0;border: solid DodgerBlue 5px;border-radius: 3px;background: grey;width: 100%;height: 100%; position: absolute;top: 0;left: 0;right: 0;bottom: 0;" onchange="readURLBig(this);" name="avatar" type="file">
+                <img id="bigPic" class="hidden" src="#">
+              </div>
             </div>
           </div>
+      </div>
+      <div id="flex-container">
+        <div class="well small_box" style="margin-top: 20px;  padding-left: 10px; padding-top: 10px;">
+          Link: <br><input name="headwearAmazon"></input><br>
+          Price: <br><input name="headwearPrice"></input><br>
+          Description: <br><input name="headwearDes"></input><br>
+          Image: <br><input type="file" name="headImage" onchange="readURLHead(this);" />
+          <img id="headPic" src="#" alt="your image" style="margin-top: 10px;"/>
         </div>
-    </div>
-    <div id="flex-container">
-      <div class="small_box" style="margin-top: 20px;  padding-left: 10px; padding-top: 10px;">
-        Link: <br><input name="headwearAmazon"></input><br>
-        Price: <br><input name="headwearPrice"></input><br>
-        Description: <br><input name="headwearDes"></input><br>
-        Image: <br><input type="file" name="headImage" onchange="readURLHead(this);" />
-        <img id="headPic" src="#" alt="your image" style="margin-top: 10px;"/>
-      </div>
-      <div class="small_box" style="margin-top: 20px;  padding-left: 10px; padding-top: 10px;">
-        Link: <br><input name="topAmazon"></input><br>
-        Price: <br><input name="topPrice"></input><br>
-        Description: <br><input name="topDes"></input><br>
-        Image: <br><input type="file" name="topImage" onchange="readURLTop(this);" />
-        <img id="topPic" src="#" alt="your image" style="margin-top: 10px;"/>
-      </div>
-      <div class="small_box" style="margin-top: 20px;  padding-left: 10px; padding-top: 10px;">
-        Link: <br><input name="pantsAmazon"></input><br>
-        Price: <br><input name="pantsPrice"></input><br>
-        Description: <br><input name="pantsDes"></input><br>
-        Image: <br><input type="file" name="pantsImage" onchange="readURLPant(this);" />
-        <img id="pantPic" src="#" alt="your image" style="margin-top: 10px;"/>
-      </div>
-      <div class="small_box" style="margin-top: 20px;  padding-left: 10px; padding-top: 10px;">
-        Link: <br><input name="footwearAmazon"></input><br>
-        Price: <br><input name="footwearPrice"></input><br>
-        Description: <br><input name="footwearDes"></input><br>
-        Image: <br><input type="file" name="footwearImage" onchange="readURLFoot(this);" />
-        <img id="footPic" src="#" alt="your image" style="margin-top: 10px;"/>
+        <div class="well small_box" style="margin-top: 20px;  padding-left: 10px; padding-top: 10px;">
+          Link: <br><input name="topAmazon"></input><br>
+          Price: <br><input name="topPrice"></input><br>
+          Description: <br><input name="topDes"></input><br>
+          Image: <br><input type="file" name="topImage" onchange="readURLTop(this);" />
+          <img id="topPic" src="#" alt="your image" style="margin-top: 10px;"/>
+        </div>
+        <div class="well small_box" style="margin-top: 20px;  padding-left: 10px; padding-top: 10px;">
+          Link: <br><input name="pantsAmazon"></input><br>
+          Price: <br><input name="pantsPrice"></input><br>
+          Description: <br><input name="pantsDes"></input><br>
+          Image: <br><input type="file" name="pantsImage" onchange="readURLPant(this);" />
+          <img id="pantPic" src="#" alt="your image" style="margin-top: 10px;"/>
+        </div>
+        <div class="well small_box" style="margin-top: 20px;  padding-left: 10px; padding-top: 10px;">
+          Link: <br><input name="footwearAmazon"></input><br>
+          Price: <br><input name="footwearPrice"></input><br>
+          Description: <br><input name="footwearDes"></input><br>
+          Image: <br><input type="file" name="footwearImage" onchange="readURLFoot(this);" />
+          <img id="footPic" src="#" alt="your image" style="margin-top: 10px;"/>
+        </div>
       </div>
     </div>
-  </div>
   </form>
 </div>
 
@@ -191,19 +190,10 @@
                     var reader = new FileReader();
 
                     reader.onload = function (e) {
-
-                        $('#bigPic').attr('src', e.target.result)
-                        var height = Number($('#bigPic').attr('height'))
-                        var width = Number($('#bigPic').attr('width'))
-                        if(height/width>$('.yesyesyes').attr('height')/$('.yesyesyes').attr('width')){
-                          var ratio = $('.yesyesyes').attr('width')/width;
-                          $('#bigPic').attr('height',ratio*height)
-                          $('#bigPic').attr('width',ratio*width)
-                        }else{
-                          var ratio = $('.yesyesyes').attr('height')/height;
-                          $('#bigPic').attr('height',ratio*height)
-                          $('#bigPic').attr('width',ratio*width)
-                        }
+                      $('#bigPic')
+                          .attr('src', e.target.result)
+                          .width(600)
+                          .height(550);
                     };
 
                     reader.readAsDataURL(input.files[0]);
