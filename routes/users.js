@@ -15,7 +15,6 @@ const storage = multer.diskStorage({
  filename:function(req,file,cb){
    var coolbeans = file.fieldname + '-'+Date.now()+path.extname(file.originalname);
    cb(null,coolbeans)
-
  }
 })
 const upload = multer({
