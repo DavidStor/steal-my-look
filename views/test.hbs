@@ -1,0 +1,185 @@
+<div class="panel-main panel-default">
+  <div class="panel-heading">
+    <center><h4>New Post</h4></center>
+  </div>
+  <div class="panel-body">
+    <div class="box box-info">
+      <div class="box-body">
+        <div class="left-container col-sm-6">
+
+          <form method="POST" action="/newpost">
+          <div class="image-container col-md-12">
+            <div align="hahaha center">
+              <div class="yesyesyes">
+                <input id="post-image-upload" style = "cursor: pointer; opacity: 0; border: solid DodgerBlue 5px; border-radius: 3px; background: grey; position: absolute; left: 0px; width: 100%; top: 0px; height: 100%;" onchange="readURLBig(this);" name="avatar" type="file">
+                <img id="bigPic" class='hidden' src="#" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="right-container col-sm-6">
+          <div class="boxes-container col-md-offset-2 col-md-6 row">
+             <div class="col-md-12 boxesCR" style="border: solid DodgerBlue 5px;">
+                 Link: <input name="headwearAmazon"></input><br>
+                 Price: <input name="headwearPrice"></input><br>
+                 Description: <input name="headwearDes"></input><br>
+                 Image: <input type="file" name="headImage" onchange="readURLHead(this);" />
+                 <img id="headPic" src="#" alt="your image" style="font-size: 10px;"/>
+             </div>
+             <div class="col-md-12 boxesCR" style="border: solid DodgerBlue 5px;">
+                 Link: <input name="topAmazon"></input><br>
+                 Price: <input name="topPrice"></input><br>
+                 Description: <input name="topDes"></input><br>
+                 Image: <input type="file" name="topImage" onchange="readURLTop(this);" />
+                 <img id="topPic" src="#" alt="your image" />
+             </div>
+             <div class="col-md-12 boxesCR" style="border: solid DodgerBlue 5px;">
+                 Link: <input name="pantsAmazon"></input><br>
+                 Price: <input name="pantsPrice"></input><br>
+                 Description: <input name="pantsDes"></input><br>
+                 Image: <input type="file" name="pantsImage" onchange="readURLPant(this);" />
+                 <img id="pantPic" src="#" alt="your image" />
+             </div>
+             <div class="col-md-12 boxesCR" style="border: solid DodgerBlue 5px;">
+                 Link: <input name="footwearAmazon"></input><br>
+                 Price: <input name="footwearPrice"></input><br>
+                 Description: <input name="footwearDes"></input><br>
+                 Image: <input type="file" name="footwearImage" onchange="readURLFoot(this);" />
+                 <img id="footPic" src="#" alt="your image" />
+             </div>
+               <input type='submit' class="btn btn-primary" value='Submit'>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+        <hr style="margin: 5px 0 5px 0;">
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .panel-main {
+    display: inline !important;
+  }
+  .left-container {
+    border: 2px solid black;
+    padding: 0px;
+  }
+  .right-container {
+    border: 2px solid black
+  }
+  .image-container {
+    border: 2px solid yellow;
+    height: 750px;
+    background-color: #f8f8f8;
+
+  }
+
+  .boxes-container {
+    /* justify-content: center;
+    align-items: center; */
+  }
+  .boxesCR {
+      display: block;
+      border: solid green 2px;
+      background-color: #F8F8F8;
+      margin-bottom: 20px;
+      margin-top: 10px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+  }
+</style>
+
+<script>
+  $(document).ready(function(){
+    $('.panel-main').width(window.innerWidth)
+    $('.panel-main').height(window.innerHeight)
+    $('.box-body').height(window.innerHeight)
+    $('.left-container').height(window.innerHeight)
+    $('.right-container').height(window.innerHeight)
+    //$('.image-container').height(600)
+    // $('.container').attr('padding', 0)
+
+  })
+  function readURLHead(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+          $('#headPic')
+            .attr('src', e.target.result)
+            .width(150)
+            .height(200);
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  function readURLTop(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+          $('#topPic')
+              .attr('src', e.target.result)
+              .width(150)
+              .height(200);
+      };
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+      function readURLPant(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#pantPic')
+                            .attr('src', e.target.result)
+                            .width(150)
+                            .height(200);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+      function readURLFoot(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#footPic')
+                            .attr('src', e.target.result)
+                            .width(150)
+                            .height(200);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+      function readURLBig(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+
+                        $('#bigPic').attr('src', e.target.result)
+                        var height = $('#bigPic').attr('height')
+                        var width = $('#bigPic').attr('width')
+                        if(height/width>$('.yesyesyes').attr('height')/$('.yesyesyes').attr('width')){
+                          var ratio = $('.yesyesyes').attr('width')/width;
+                          $('#bigPic').attr('height',ratio*height)
+                          $('#bigPic').attr('width',ratio*width)
+                        }else{
+                          var ratio = $('.yesyesyes').attr('height')/height;
+                          $('#bigPic').attr('height',ratio*height)
+                          $('#bigPic').attr('width',ratio*width)
+                        }
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+                $('#bigPic').removeClass('hidden')
+            }
+</script>

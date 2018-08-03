@@ -166,11 +166,11 @@ input.hidden {
   border-radius: 8px;
 }
 
-.boxes-container {
-
-
+#spacer {
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  margin-bottom: 10px;
 }
-
 
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 800px) {
