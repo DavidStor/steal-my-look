@@ -121,4 +121,4 @@ var Look = mongoose.model('Look', lookSchema);
 var Ratings = mongoose.model('Ratings',ratingsSchema);
 var Wardrobe = mongoose.model('Wardrobe', wardrobeSchema);
 
-export default {User, Post, Product, Look, Wardrobe}
+export default {User, Post, Product, Look, Wardrobe, Ratings}
