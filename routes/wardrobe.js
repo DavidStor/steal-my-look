@@ -10,7 +10,7 @@ var fs = require('fs');
 import path from "path";
 router.get('/wardrobe', function(req, res) {
   var owner = req.user._id;
-  User.findbyId(owner)
+  User.findById(owner)
   .populate({
     path: 'wardrobe',
     populate: [{path:'headwear'},{path:'top'},{path:'pants'},{path:'footwear'}]
@@ -20,8 +20,8 @@ router.get('/wardrobe', function(req, res) {
     populate: [{path:'headwear'},{path:'top'},{path:'pants'},{path:'footwear'}]
   })
   .exec(function(error, user) {
-    if(err){
-      console.log(err)
+    if(error){
+      console.log(error)
     }else{
         res.render('wardrobe', {wardrobe: user.wardrobe,user:user})
     }
