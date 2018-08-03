@@ -3,12 +3,12 @@
     {{#each posts}}
       <div class="photo" style="background-color: #f5f5f5;">
           <header class="photo__header">
-              <img src="/images/avatar-1533250464270.jpg" class="photo__avatar" />
+              <img src="/public/images/{{this.fromUser.profilePic}}" class="photo__avatar" />
               <div class="photo__user-info">
                   <span class="photo__author">{{post.fromUser}}</span>
               </div>
           </header>
-          <center><img src="/images/avatar-1533250464270.jpg" style="width: 600px; height: 550px;"/></center>
+          <center><img src="{{this.image}}" style="width: 600px; height: 550px;"/></center>
           <div class="photo__info">
           </div>
           <!-- <form method="POST" action="/emoji/{{post._id}}"> -->
