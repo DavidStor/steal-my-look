@@ -170,7 +170,11 @@ router.post('/newpost',upload2.single('imgSrc'), function(req, res) {
                       console.log('successfully saved new look');
                       var newPost = new Post({
                         image: req.body.image,
-                        likes: 0,
+                        ratings: {
+                          smileys: 0,
+                          meh: 0,
+                          frowns: 0
+                        },
                         Look: looker.id,
                         fromUser: req.user._id,
                       })
@@ -232,11 +236,27 @@ router.post('/editprofile', function(req, res) {
 })
 
 // POST Emoji //
-router.post('/emoji', function(req, res) {
-  console.log('req.user is ISSSSS', req.user);
-  console.log('req.body is ISSSSS', req.body);
+router.post('/emoji/:postId/1', function(req, res) {
+  /* Post.update({_id: postId}, function(err, updatedObject) {
 
-})
+  } */
+  console.log('inside post emoji 1');
+  var current =0;
+  Post.findById(req.params.postId, function(err, thePost) {
+    if (err) {
+      console.log('error finding post', err);
+    } else {
+      console.log(thePost);
+      //current= thePost.ratings.smileys;
+      console.log('successfully found post');
+      console.log('post is', thePost);
+      // thePost.set({ratings: {
+      //   smileys: current + 1
+      // }});
+
+    }
+  })
+  })
 
 
 

@@ -11,13 +11,19 @@
           <center><img src="{{post.image}}" style="width: 500px"/></center>
           <div class="photo__info">
           </div>
-          <form method="POST" action="/emoji/{{post._id}}">
+          <!-- <form method="POST" action="/emoji/{{post._id}}"> -->
             <center><div>
-              <button id="1"  style="margin-bottom: 10px; font-size:30px; background: red">😍</button>
-              <button id="2"  style="margin-bottom: 10px; font-size:30px; background: yellow">😐</button>
-              <button id="3"  style="margin-bottom: 10px; font-size:30px; background: green">😰</button>
+              <form method="POST" action="/emoji/{{this._id}}/1">
+                <button id="1"  style="margin-bottom: 10px; font-size:30px; background: red">😍</button>
+              </form>
+              <form method="POST" action="/emoji/{{this._id}}/2">
+                <button id="2"  style="margin-bottom: 10px; font-size:30px; background: yellow">😐</button>
+              </form>
+              <form method="POST" action="/emoji/{{this._id}}/3">
+                <button id="3"  style="margin-bottom: 10px; font-size:30px; background: green">😰</button>
+              </form>
             </div></center>
-           </form>
+           <!-- </form> -->
           <form method="GET" action="/wardrobe">
             <center><button class="btn1 btn-primary" style="margin-bottom: 10px; width: 300px">Steal My Look</button></center>
           </form>
