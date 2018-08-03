@@ -152,17 +152,17 @@ router.post('/newpost',upload2.single('imgSrc'), function(req, res) {
       console.log('error adding new headwear');
     } else {
       console.log('successfully saved new headwear');
-      newtop.save(function(err,topper) {
+      newTop.save(function(err,topper) {
         if (err) {
           console.log('error adding new top');
         } else {
           console.log('successfully saved new top');
-          newpants.save(function(err,panter) {
+          newPants.save(function(err,panter) {
             if (err) {
               console.log('error adding new pants');
             } else {
               console.log('successfully saved new pants');
-              newfootwear.save(function(err,footer) {
+              newFootwear.save(function(err,footer) {
                 if (err) {
                   console.log('error adding new footwear');
                 } else {
@@ -239,18 +239,15 @@ router.post('/editprofile', function(req, res) {
       }
     })
   }
-
 })
 
-// GET wardrobe //
-router.get('/wardrobe', function(req, res) {
-  var owner = req.user._id;
-  User.findbyId(owner, function(error, user) {
-    var wardrobe
-  })
-
-  res.render('wardrobe', {wardrobe: wardrobe,
-  user:req.user})
+// POST Emoji //
+router.post('/emoji', function(req, res) {
+  console.log('req.user is ISSSSS', req.user);
+  console.log('req.body is ISSSSS', req.body);
+  
 })
+
+
 
 module.exports = router;
