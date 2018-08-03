@@ -14,13 +14,13 @@
           <!-- <form method="POST" action="/emoji/{{post._id}}"> -->
             <center><div>
               <form style="clear: right; display: inline-block;" method="POST" action="/emoji/{{this._id}}/1">
-                <button id="1"  style="margin-bottom: 10px; font-size:30px; background: red">😍</button>
+                <button id="1"  style="margin-bottom: 10px; font-size:30px; background: red">😍 {{this.ratings.smileys}}</button>
               </form>
               <form style="clear: right; display: inline-block;" method="POST" action="/emoji/{{this._id}}/2">
-                <button id="2"  style="margin-bottom: 10px; font-size:30px; background: yellow">😐</button>
+                <button id="2"  style="margin-bottom: 10px; font-size:30px; background: yellow">😐 {{this.ratings.meh}}</button>
               </form>
               <form style="clear: right; display: inline-block;" method="POST" action="/emoji/{{this._id}}/3">
-                <button id="3"  style="margin-bottom: 10px; font-size:30px; background: green">😰</button>
+                <button id="3"  style="margin-bottom: 10px; font-size:30px; background: green">😰 {{this.ratings.frowns}}</button>
               </form>
             </div></center>
            <!-- </form> -->
