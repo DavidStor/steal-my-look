@@ -1,8 +1,11 @@
+<script>
+
+</script>
 <div class="panel-main panel-default">
-  <form method="POST" action="/newpost">
+  <form id='plswork'>
   <div class="panel-heading">
     <center><h4>New Post</h4>
-    <input type='submit' class="btn btn-primary" value='Submit'></center>
+    <input type='submit' class="btn btn-primary" value='Submit' id='submitter'></center>
   </div>
   <div class="panel-body">
     <div id="flex-container">
@@ -115,6 +118,7 @@
 </style>
 
 <script>
+
   $(document).ready(function(){
     $('.panel-main').width(window.innerWidth)
     $('.panel-main').height(window.innerHeight)
@@ -124,6 +128,35 @@
     //$('.image-container').height(600)
     // $('.container').attr('padding', 0)
 
+  })
+  $('#submitter').on('click',function mySubmitFunction(e) {
+    console.log(e)
+    e.preventDefault()
+    console.log('hello')
+    var hello =$("#topPic").attr('src')
+    console.log(hello)
+    $.ajax({
+      url: "https://api.imgur.com/3/image",
+      type: "POST",
+      datatype: "json",
+      headers: {
+        "Authorization": "Client-ID 773559d7e6b4634"
+      },
+      data: {
+        image:hello
+      },
+      success: function(response) {
+        //console.log(response);
+        console.log(response)
+        console.log(response.data.link)
+      },
+      error:function(Err){
+        console.log(Err)
+      },
+      cache: false,
+      contentType: false,
+      processData: false
+    });
   })
   function readURLHead(input) {
     if (input.files && input.files[0]) {
