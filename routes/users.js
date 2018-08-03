@@ -5,6 +5,7 @@ var User = models.User;
 var Post = models.Post;
 var Product = models.Product;
 var Look = models.Look;
+var Rating = models.Ratings
 var fs = require('fs');
 import path from "path";
 var multer  = require('multer')
@@ -21,20 +22,10 @@ const storage = multer.diskStorage({
     })
   }
 })
-const upload=multer({
+const upload = multer({
   storage:storage
 })
-const storage2 = multer.diskStorage({
-  destination: path.resolve(__dirname,'../public/images/'),
-  filename:function(req,file,cb){
-    var coolbeans = file.fieldname + '-'+Date.now()+path.extname(file.originalname);
-    cb(null,coolbeans)
-  }
-})
-const upload2=multer({
-  storage:storage2
-})
-
+//data
 // GET profile //
 router.get('/profile', function(req, res) {
   console.log(req.user.username);
@@ -91,7 +82,31 @@ router.get('/newpost', function(req, res) {
 })
 
 // POST new post //
-router.post('/newpost',upload2.single('imgSrc'), function(req, res) {
+router.post('/newpost', function(req, res) {
+  fs.writeFile("/public/images/", req.body.headImage, 'binary', function(err) {
+    if(err)
+      console.log(err);
+    else
+      console.log("The file was saved!");
+  });
+  fs.writeFile("/public/images/", req.body.topImage, 'binary', function(err) {
+    if(err)
+      console.log(err);
+    else
+      console.log("The file was saved!");
+  });
+  fs.writeFile("/public/images/", req.body.pantImage, 'binary', function(err) {
+    if(err)
+      console.log(err);
+    else
+      console.log("The file was saved!");
+  });
+  fs.writeFile("/public/images/", req.body.footImage, 'binary', function(err) {
+    if(err)
+      console.log(err);
+    else
+      console.log("The file was saved!");
+  });
   // var counter = 0;
   // if(req.body.headwearAmazon.trim().length !=0 && req.body.headwearDes.trim().length !=0 && req.body.headwearPrice.trim().length !=0 && req.body.headwearImage.trim().length !=0){
   //   counter++;
@@ -113,7 +128,7 @@ router.post('/newpost',upload2.single('imgSrc'), function(req, res) {
     description: req.body.headwearDes,
     type: "headwear",
     price: req.body.headwearPrice,
-    image: req.body.filename
+    image: req.body.headImage
   })
   var newTop = new Product({
     Amazonlink: req.body.topAmazon,
@@ -127,14 +142,14 @@ router.post('/newpost',upload2.single('imgSrc'), function(req, res) {
     description: req.body.pantsDes,
     type: "pants",
     price: req.body.pantsPrice,
-    image: req.body.pantsImage
+    image: req.body.pantImage
   })
   var newFootwear = new Product({
     Amazonlink: req.body.footwearAmazon,
     description: req.body.footwearDes,
     type: "footwear",
     price: req.body.footwearPrice,
-    image: req.body.footwearImage
+    image: req.body.footImage
   })
 
   newHeadwear.save(function(err,header) {
@@ -168,20 +183,33 @@ router.post('/newpost',upload2.single('imgSrc'), function(req, res) {
                       console.log('error saving new look');
                     } else {
                       console.log('successfully saved new look');
-                      var newPost = new Post({
-                        image: req.body.image,
-                        likes: 0,
-                        Look: looker.id,
-                        fromUser: req.user._id,
+                      var newRat = new Rating({
+                        smileys:0,
+                        meh:0,
+                        frowns:0
                       })
-                      newPost.save(function(err) {
-                        if (err) {
-                          console.log('error adding new post');
-                        } else {
-                          console.log('successfully saved new post');
-                          res.redirect('/');
+                      newRat.save(function(err,rating){
+                        if(err){
+                          console.log(err)
+                        }else{
+                          var newPost = new Post({
+                            image: req.body.image,
+                            likes: 0,
+                            Look: looker.id,
+                            fromUser: req.user._id,
+                            ratings:rating._id
+                          })
+                          newPost.save(function(err) {
+                            if (err) {
+                              console.log('error adding new post');
+                            } else {
+                              console.log('successfully saved new post');
+                              res.redirect('/');
+                            }
+                          })
                         }
                       })
+
                     }
                   })
                 }
@@ -232,11 +260,6 @@ router.post('/editprofile', function(req, res) {
 })
 
 // POST Emoji //
-router.post('/emoji', function(req, res) {
-  console.log('req.user is ISSSSS', req.user);
-  console.log('req.body is ISSSSS', req.body);
-
-})
 
 
 
