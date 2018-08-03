@@ -8,6 +8,7 @@ var User = models.User;
 import users from './routes/users';
 import index from './routes/index';
 import auth from './routes/auth';
+import wardrober from './routes/wardrobe';
 var app = express();
 var mongoose = require('mongoose');
 var sta = require('connect-mongo');
@@ -86,6 +87,7 @@ passport.deserializeUser((id, done) => {
 app.use('/', auth(passport));
 app.use('/', index);
 app.use('/', users);
+app.use('/', wardrober);
 // catch 404 and forward to error handler
 
 // error handler
