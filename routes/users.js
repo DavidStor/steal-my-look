@@ -101,6 +101,7 @@ router.post('/newpost', function(req, res) {
   // if(counter<3){
   //   res.render('newpost',{error:"Must Fill in At Least 3 Pieces of Clothing"})
   // }else{
+
   var newHeadwear = new Product({
     Amazonlink: req.body.headwearAmazon,
     description: req.body.headwearDes,
@@ -129,6 +130,7 @@ router.post('/newpost', function(req, res) {
     price: req.body.footwearPrice,
     image: req.body.footwearImage
   })
+  console.log(newHeadwear)
 
   newHeadwear.save(function(err,header) {
     if (err) {

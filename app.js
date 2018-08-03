@@ -17,6 +17,7 @@ var LocalStrategy = require('passport-local');
 import session from 'express-session';
 import crypto from 'crypto';
 var MongoStore = sta(session);
+import bodyParser from 'body-parser';
 
 mongoose.connection.on('connected',function(){
   console.log('MongoDB Connected')
@@ -28,7 +29,8 @@ app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
