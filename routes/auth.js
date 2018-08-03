@@ -1,6 +1,7 @@
 import express from 'express';
 import models from '../models/models.js';
 var User = models.User;
+var Wardrobe = models.Wardrobe;
 import expressValidator from 'express-validator';
 import crypto from 'crypto';
 
@@ -56,17 +57,29 @@ export default function(passport) {
             });
           } else {
             var hashedPassword = hashPassword(req.body.password);
-            var newUser = new User({
-              username: req.body.username,
-              password: hashedPassword,
-              firstname: req.body.firstname,
-              lastname: req.body.lastname,
-            });
-            newUser.save().then((result) => {
-              res.redirect('/login');
-            }).catch((err) => {
-              res.send(err);
-            });
+            var hello = new Wardrobe({
+              Look:[]
+            })
+            hello.save(function(err,why){
+              if(err){
+                console.log(err)
+              }else{
+                var newUser = new User({
+                  username: req.body.username,
+                  password: hashedPassword,
+                  firstname: req.body.firstname,
+                  lastname: req.body.lastname,
+                  wardrobe:why
+                });
+
+                newUser.save().then((result) => {
+                  res.redirect('/login');
+                }).catch((err) => {
+                  res.send(err);
+                });
+              }
+            })
+
           }
         }else{
           if(errors) {
