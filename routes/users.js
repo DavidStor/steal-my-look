@@ -377,6 +377,17 @@ router.post('/emoji/:postId/3', function(req, res) {
   })
   })
 
+  // GET about us //
+  router.get('/aboutus', function(req, res) {
+    res.render('aboutus');
+  })
+
+  // GET error page //
+  router.get('/error', function(req, res) {
+    res.render('autisticScreeching');
+  })
+
+
 
 
 module.exports = router;

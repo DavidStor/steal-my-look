@@ -31,7 +31,9 @@ router.get('/wardrobe', function(req, res) {
 })
 
 // POST wardrobe //
+router.post('/wardrobe', function(req, res) {
 
+})
 
 
 module.exports = router;
