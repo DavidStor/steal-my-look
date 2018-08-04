@@ -1,53 +1,28 @@
 <div class="row" style="margin-top: 30px;">
   <div class="col-md-9" style="margin-left: 12.5%">
     <div class="panel panel-default">
-      <div class="panel-heading"><center><h2>{{user.username}}</h2></center></div>
+      <div class="panel-heading"><center><h2>About Us</h2></center></div>
       <div class="panel-body">
         <div class="box box-info">
           <div class="box-body">
             <div class="col-sm-6">
-              {{#if user.profilePic}}
-              <div align="center"> <img alt="User Pic" src="/images/{{user.profilePic}}" id="profile-image1" class="img-circle img-responsive">
-                <h4 style="color:#00b1b1; display: inline-block; margin-right: 10px;">{{user.firstname}} {{user.lastname}}</h4>
-                <form method="GET" action="/editprofile">
-                  <button class="btn btn-primary"><i class="fa fa-pencil"></i> Edit Profile</button>
-                </form>
+              <div align="center"> <img alt="User Pic" src="/images/avatar-1533250464270.jpg" id="profile-image1" class="img-circle img-responsive">
+                <h4 style="color:#00b1b1; display: inline-block; margin-right: 10px;">Ronil Awalegaonkar</h4>
               </div>
-              {{else}}
-              <div align="center"> <img alt="User Pic" src="https://x1.xingassets.com/assets/frontend_minified/img/users/nobody_m.original.jpg" id="profile-image1" class="img-circle img-responsive">
-                <h4 style="color:#00b1b1; display: inline-block; margin-right: 10px;">{{user.firstname}} {{user.lastname}}</h4>
-                <form method="GET" action="/editprofile">
-                  <button class="btn btn-prima  ry"><i class="fa fa-pencil"></i> Edit Profile</button>
-                </form>
+              <div align="center"> <img alt="User Pic" src="/images/19985735_1346710022112647_299056824768790528_a.jpg" id="profile-image1" class="img-circle img-responsive">
+                <h4 style="color:#00b1b1; display: inline-block; margin-right: 10px;">David Storozhenko</h4>
               </div>
-              {{/if}}
+              <div align="center"> <img alt="User Pic" src="/images/avatar-1533250276178.jpg" id="profile-image1" class="img-circle img-responsive">
+                <h4 style="color:#00b1b1; display: inline-block; margin-right: 10px;">Owen Zhang</h4>
+              </div>
+              <div align="center"> <img alt="User Pic" src="/images/IMG_3485.JPG" id="profile-image1" class="img-circle img-responsive">
+                <h4 style="color:#00b1b1; display: inline-block; margin-right: 10px;">Amit Sant</h4>
+              </div>
               <br>
-            </div>
-            <div class="col-sm-6">
-              <h4 style="color: black; display: inline-block; margin-right: 10px;"><b>Bio:</b> {{user.bio}}</h4><br>
-              <h4 style="color: black; display: inline-block; margin-right: 10px;"><b>0</b> followers</h4><br>
-              <h4 style="color: black; display: inline-block; margin-right: 10px;"><b>0</b> following</h4>
-              <br>
-              <br>
-              <form method="GET" action="/newpost">
-                <button class="btn1 btn-success"><i class="fa fa-camera"></i> Post a Look</button>
-              </form>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <script>
-    $(function() {
-      $('#profile-image1').on('click', function() {
-          $('#profile-image-upload').click();
-      });
-    });
-    function submitFile() {
-      console.log(arguments);
-      document.querySelector('form').submit();
-    }
-    //
-  </script>
 </div>
