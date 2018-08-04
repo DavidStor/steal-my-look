@@ -5,6 +5,7 @@ var User = models.User;
 var Post = models.Post;
 var Product = models.Product;
 var Look = models.Look;
+var Wardrobe=models.Wardrobe
 var fs = require('fs');
 import path from "path";
 
@@ -29,10 +30,14 @@ router.get('/wardrobe', function(req, res) {
     }
   })
 })
-
-// POST wardrobe //
-router.post('/wardrobe', function(req, res) {
-
+router.delete('/wardrobe/:id',function(req,res){
+  Wardrobe.deleteOne({_id:req.params.id},function(err,cool){
+    if(err){
+      console.log(err)
+    }else{
+      res.redirct('/wardrobe')
+    }
+  })
 })
 
 
